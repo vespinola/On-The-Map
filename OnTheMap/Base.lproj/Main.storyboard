@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pB6-C4-OZK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pB6-C4-OZK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0m-wi-7ry">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="oyz-f3-RT5"/>
                                 </constraints>
@@ -29,14 +29,14 @@
                                 </items>
                             </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4Mf-Ib-s7u">
-                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N0m-wi-7ry" secondAttribute="trailing" id="2tq-Bg-iNk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4Mf-Ib-s7u" secondAttribute="trailing" id="E89-Oo-bzP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="N0m-wi-7ry" secondAttribute="top" constant="20" id="Xsc-pM-mFS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="N0m-wi-7ry" secondAttribute="top" id="Xsc-pM-mFS"/>
                             <constraint firstItem="4Mf-Ib-s7u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b0s-fq-0PW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Mf-Ib-s7u" secondAttribute="bottom" id="eOI-lp-Lzr"/>
                             <constraint firstItem="N0m-wi-7ry" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lu8-hr-0jg"/>
@@ -53,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="2480.8000000000002" y="-382.75862068965517"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="9ms-je-jCy">
             <objects>
-                <viewController id="pB6-C4-OZK" sceneMemberID="viewController">
+                <viewController id="pB6-C4-OZK" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fEF-nw-kqe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,10 +97,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cuh-to-P0i">
                                         <rect key="frame" x="0.0" y="294.5" width="335" height="30"/>
                                         <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="loginButtonOnTap:" destination="pB6-C4-OZK" eventType="touchUpInside" id="VFQ-sc-YSQ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6TV-Mp-wGL">
                                         <rect key="frame" x="0.0" y="332.5" width="335" height="30"/>
                                         <state key="normal" title="Don't have an account? Sign Up"/>
+                                        <connections>
+                                            <action selector="registerButtonOnTap:" destination="pB6-C4-OZK" eventType="touchUpInside" id="euU-EG-Yuj"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -114,7 +120,12 @@
                         <viewLayoutGuide key="safeArea" id="ZXy-BG-bWm"/>
                     </view>
                     <connections>
-                        <segue destination="MNE-hv-E9J" kind="show" id="aUC-nP-SDQ"/>
+                        <outlet property="loginButton" destination="Cuh-to-P0i" id="X3U-zj-bBk"/>
+                        <outlet property="logoImageView" destination="UEA-Vi-Gk4" id="zJd-0S-52c"/>
+                        <outlet property="passwordTextfield" destination="urQ-oR-a2d" id="Co7-yw-Nc1"/>
+                        <outlet property="registerButton" destination="6TV-Mp-wGL" id="S61-8l-usS"/>
+                        <outlet property="usernameTextfield" destination="eZD-qK-0og" id="ULL-Yp-EoA"/>
+                        <segue destination="MNE-hv-E9J" kind="show" identifier="homeSegue" id="aUC-nP-SDQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHK-x2-q3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -127,6 +138,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="MNE-hv-E9J" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fWg-A6-2BD">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
