@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
         
         mapView.delegate = self
         
-        var locations = hardCodedLocationData()
+        let locations = hardCodedLocationData()
         
         var annotations:[MKAnnotation] = []
         
@@ -41,6 +41,7 @@ class MapViewController: UIViewController {
             annotations.append(annotation)
             
         }
+        
     }
 
 }

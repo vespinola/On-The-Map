@@ -19,7 +19,11 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        logoImageView.contentMode = .scaleAspectFit
+        
+//        [usernameTextfield, passwordTextfield].forEach {
+        
+//        }
     }
 
     @IBAction func loginButtonOnTap(_ sender: Any) {
