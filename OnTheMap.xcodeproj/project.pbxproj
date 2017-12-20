@@ -69,6 +69,7 @@
 				C3B393BB1FE86F9200DB1F52 /* AppDelegate.swift */,
 				C3B9C7191FE98AB0003F5377 /* Constants.swift */,
 				C3B393BF1FE86F9200DB1F52 /* Main.storyboard */,
+				C3B393C71FE86F9200DB1F52 /* Info.plist */,
 				CEF608D71FE9F87800076339 /* Controller */,
 				C3B9C71B1FE9BFE3003F5377 /* Supporting Files */,
 			);
@@ -78,7 +79,6 @@
 		C3B9C71B1FE9BFE3003F5377 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C3B393C71FE86F9200DB1F52 /* Info.plist */,
 				C3B393C21FE86F9200DB1F52 /* Assets.xcassets */,
 				C3B393C41FE86F9200DB1F52 /* LaunchScreen.storyboard */,
 				C3B9C71C1FE9C02E003F5377 /* CustomTextField.swift */,
