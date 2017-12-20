@@ -54,6 +54,81 @@
             </objects>
             <point key="canvasLocation" x="2480.8000000000002" y="-382.75862068965517"/>
         </scene>
+        <!--Register Location View Controller-->
+        <scene sceneID="YKY-P5-e4Q">
+            <objects>
+                <viewController id="7xf-Ge-ZM9" customClass="RegisterLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F4j-Ip-3LV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyP-sI-04n">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4fV-XO-cLH"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="flexibleSpace" id="bBx-Cg-JyD"/>
+                                    <barButtonItem systemItem="cancel" id="Woi-Z2-ZTW">
+                                        <connections>
+                                            <action selector="cancelButtonOnTap:" destination="7xf-Ge-ZM9" id="2FB-hB-KDJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqZ-H2-jDT">
+                                <rect key="frame" x="20" y="83" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MQt-Ss-0bM">
+                                <rect key="frame" x="0.0" y="154" width="375" height="373"/>
+                                <color key="backgroundColor" red="0.04268888384103775" green="0.49779301881790161" blue="0.9736817479133606" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PST-Kb-ixL">
+                                <rect key="frame" x="20" y="577" width="335" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="Find on the Map">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerButtonOnTap:" destination="7xf-Ge-ZM9" eventType="touchUpInside" id="nr3-N3-gsJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MQt-Ss-0bM" firstAttribute="leading" secondItem="BJA-N3-6oN" secondAttribute="leading" id="1kW-Ob-ebq"/>
+                            <constraint firstItem="HqZ-H2-jDT" firstAttribute="top" secondItem="gyP-sI-04n" secondAttribute="bottom" constant="39" id="ACI-6X-Nga"/>
+                            <constraint firstItem="MQt-Ss-0bM" firstAttribute="top" secondItem="HqZ-H2-jDT" secondAttribute="bottom" constant="50" id="B96-mv-xHd"/>
+                            <constraint firstItem="gyP-sI-04n" firstAttribute="top" secondItem="F4j-Ip-3LV" secondAttribute="top" id="F8C-yP-vdU"/>
+                            <constraint firstItem="PST-Kb-ixL" firstAttribute="top" secondItem="MQt-Ss-0bM" secondAttribute="bottom" constant="50" id="GMG-N4-mzV"/>
+                            <constraint firstItem="PST-Kb-ixL" firstAttribute="leading" secondItem="BJA-N3-6oN" secondAttribute="leading" constant="20" id="GX6-dx-geU"/>
+                            <constraint firstItem="BJA-N3-6oN" firstAttribute="trailing" secondItem="PST-Kb-ixL" secondAttribute="trailing" constant="20" id="PPb-JC-XXG"/>
+                            <constraint firstItem="gyP-sI-04n" firstAttribute="leading" secondItem="BJA-N3-6oN" secondAttribute="leading" id="aKF-hl-nxv"/>
+                            <constraint firstItem="BJA-N3-6oN" firstAttribute="trailing" secondItem="HqZ-H2-jDT" secondAttribute="trailing" constant="20" id="ecs-pg-PRv"/>
+                            <constraint firstItem="HqZ-H2-jDT" firstAttribute="leading" secondItem="BJA-N3-6oN" secondAttribute="leading" constant="20" id="hdu-Sr-S3O"/>
+                            <constraint firstItem="BJA-N3-6oN" firstAttribute="trailing" secondItem="MQt-Ss-0bM" secondAttribute="trailing" id="ho9-Pc-t1S"/>
+                            <constraint firstItem="BJA-N3-6oN" firstAttribute="bottom" secondItem="PST-Kb-ixL" secondAttribute="bottom" constant="60" id="kx2-2m-6Lt"/>
+                            <constraint firstItem="gyP-sI-04n" firstAttribute="trailing" secondItem="BJA-N3-6oN" secondAttribute="trailing" id="lZw-q5-NGH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BJA-N3-6oN"/>
+                    </view>
+                    <connections>
+                        <outlet property="locationTextView" destination="MQt-Ss-0bM" id="baf-5S-0Nk"/>
+                        <outlet property="registerButton" destination="PST-Kb-ixL" id="HnK-jl-s9R"/>
+                        <outlet property="titleLabel" destination="HqZ-H2-jDT" id="8WB-bT-dan"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9e8-i8-TAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3365.5999999999999" y="-343.17841079460271"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PFe-tv-qcS">
             <objects>
