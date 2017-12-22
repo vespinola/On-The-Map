@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3A944211FEDAB8F007A1618 /* AddLocationStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A944201FEDAB8F007A1618 /* AddLocationStep1ViewController.swift */; };
 		C3B393BC1FE86F9200DB1F52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B393BB1FE86F9200DB1F52 /* AppDelegate.swift */; };
 		C3B393BE1FE86F9200DB1F52 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B393BD1FE86F9200DB1F52 /* MapViewController.swift */; };
 		C3B393C11FE86F9200DB1F52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3B393BF1FE86F9200DB1F52 /* Main.storyboard */; };
@@ -15,12 +16,11 @@
 		C3B9C7181FE98639003F5377 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9C7171FE98639003F5377 /* LoginViewController.swift */; };
 		C3B9C71A1FE98AB0003F5377 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9C7191FE98AB0003F5377 /* Constants.swift */; };
 		C3B9C71D1FE9C02E003F5377 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9C71C1FE9C02E003F5377 /* CustomTextField.swift */; };
-		CEF608D61FE9F7B800076339 /* RegisterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608D51FE9F7B800076339 /* RegisterLocationViewController.swift */; };
 		CEF608DA1FE9F8AD00076339 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608D91FE9F8AD00076339 /* Util.swift */; };
-		CEF608DC1FE9FDD900076339 /* RegisterLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608DB1FE9FDD900076339 /* RegisterLinkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C3A944201FEDAB8F007A1618 /* AddLocationStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationStep1ViewController.swift; sourceTree = "<group>"; };
 		C3B393B81FE86F9200DB1F52 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B393BB1FE86F9200DB1F52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3B393BD1FE86F9200DB1F52 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -31,9 +31,7 @@
 		C3B9C7171FE98639003F5377 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C3B9C7191FE98AB0003F5377 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C3B9C71C1FE9C02E003F5377 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		CEF608D51FE9F7B800076339 /* RegisterLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationViewController.swift; sourceTree = "<group>"; };
 		CEF608D91FE9F8AD00076339 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		CEF608DB1FE9FDD900076339 /* RegisterLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLinkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +90,7 @@
 			children = (
 				C3B393BD1FE86F9200DB1F52 /* MapViewController.swift */,
 				C3B9C7171FE98639003F5377 /* LoginViewController.swift */,
-				CEF608D51FE9F7B800076339 /* RegisterLocationViewController.swift */,
-				CEF608DB1FE9FDD900076339 /* RegisterLinkViewController.swift */,
+				C3A944201FEDAB8F007A1618 /* AddLocationStep1ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,12 +169,11 @@
 			files = (
 				C3B9C7181FE98639003F5377 /* LoginViewController.swift in Sources */,
 				C3B393BE1FE86F9200DB1F52 /* MapViewController.swift in Sources */,
-				CEF608DC1FE9FDD900076339 /* RegisterLinkViewController.swift in Sources */,
-				CEF608D61FE9F7B800076339 /* RegisterLocationViewController.swift in Sources */,
 				C3B393BC1FE86F9200DB1F52 /* AppDelegate.swift in Sources */,
 				CEF608DA1FE9F8AD00076339 /* Util.swift in Sources */,
 				C3B9C71A1FE98AB0003F5377 /* Constants.swift in Sources */,
 				C3B9C71D1FE9C02E003F5377 /* CustomTextField.swift in Sources */,
+				C3A944211FEDAB8F007A1618 /* AddLocationStep1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

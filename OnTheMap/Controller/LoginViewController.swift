@@ -21,9 +21,6 @@ class LoginViewController: UIViewController {
 
         logoImageView.contentMode = .scaleAspectFit
         
-//        [usernameTextfield, passwordTextfield].forEach {
-        
-//        }
     }
 
     @IBAction func loginButtonOnTap(_ sender: Any) {

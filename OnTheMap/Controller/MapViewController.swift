@@ -16,8 +16,6 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapView.delegate = self
-        
         let locations = hardCodedLocationData()
         
         var annotations:[MKAnnotation] = []
@@ -43,7 +41,27 @@ class MapViewController: UIViewController {
         }
         
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    @IBAction func logoutButtonOnTap(_ sender: Any) {
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewControllerID") as! LoginViewController
+        
+        UIView.transition(with: self.view, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+            appdelegate.window!.rootViewController = homeViewController
+        }, completion: nil)
+    }
+    
+    @IBAction func addLocationOnTap(_ sender: Any) {
+        performSegue(withIdentifier: "addLocationStep1", sender: nil)
+    }
+    
 }
 
 
