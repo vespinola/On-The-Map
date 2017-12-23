@@ -59,7 +59,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func addLocationOnTap(_ sender: Any) {
-        performSegue(withIdentifier: "addLocationStep1", sender: nil)
+        performSegue(withIdentifier: "addLocationStep1FromFirstTab", sender: nil)
     }
     
 }
