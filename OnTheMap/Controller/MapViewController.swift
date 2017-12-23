@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
         
         let locations = hardCodedLocationData()
         
-        var annotations:[MKAnnotation] = []
+        var annotations:[MKPointAnnotation] = []
         
         for dictionary in locations {
             
@@ -39,6 +39,8 @@ class MapViewController: UIViewController {
             annotations.append(annotation)
             
         }
+        
+        self.mapView.addAnnotations(annotations)
         
     }
     
