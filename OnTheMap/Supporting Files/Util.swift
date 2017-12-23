@@ -8,8 +8,14 @@
 
 import UIKit
 
-class Util: NSObject {
+typealias OTMDictionary = [String: Any]
 
+class Util {
+    class func showAlert(for message: String, in viewController: UIViewController) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: nil))
+        viewController.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension UIColor {
