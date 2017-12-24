@@ -75,6 +75,16 @@ class MapViewController: UIViewController {
         performSegue(withIdentifier: "addLocationStep1FromFirstTab", sender: nil)
     }
     
+    @IBAction func refreshButtonOnTap(_ sender: Any) {
+        ParseHandler.sharedInstance().getStudentLocation(in: self) { students in
+            performUIUpdatesOnMain {
+                ParseHandler.sharedInstance().studentsLocation = students
+                self.performStudentLocation(students)
+            }
+        }
+    }
+    
+    
 }
 
 

@@ -17,6 +17,7 @@
 		C3B9C71A1FE98AB0003F5377 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9C7191FE98AB0003F5377 /* Constants.swift */; };
 		C3B9C71D1FE9C02E003F5377 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9C71C1FE9C02E003F5377 /* CustomTextField.swift */; };
 		CE17B4121FF003E300F51DCC /* UdacityDeleteSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17B4111FF003E300F51DCC /* UdacityDeleteSession.swift */; };
+		CE17B4141FF012F400F51DCC /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17B4131FF012F400F51DCC /* AddLocationViewController.swift */; };
 		CE76F0CE1FEDFC240067FDFC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76F0CD1FEDFC240067FDFC /* CustomButton.swift */; };
 		CE87E3251FEEFFA500E9321C /* ParseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E3241FEEFFA500E9321C /* ParseHandler.swift */; };
 		CE87E3271FEF1EB600E9321C /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E3261FEF1EB600E9321C /* ListViewController.swift */; };
@@ -41,6 +42,7 @@
 		C3B9C7191FE98AB0003F5377 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C3B9C71C1FE9C02E003F5377 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		CE17B4111FF003E300F51DCC /* UdacityDeleteSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityDeleteSession.swift; sourceTree = "<group>"; };
+		CE17B4131FF012F400F51DCC /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		CE76F0CD1FEDFC240067FDFC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CE87E3241FEEFFA500E9321C /* ParseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseHandler.swift; sourceTree = "<group>"; };
 		CE87E3261FEF1EB600E9321C /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				C3B9C7171FE98639003F5377 /* LoginViewController.swift */,
 				C3A944201FEDAB8F007A1618 /* AddLocationStep1ViewController.swift */,
 				CE87E3261FEF1EB600E9321C /* ListViewController.swift */,
+				CE17B4131FF012F400F51DCC /* AddLocationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				C3B9C71A1FE98AB0003F5377 /* Constants.swift in Sources */,
 				CE87E3291FEF2ACF00E9321C /* UdacityHandler.swift in Sources */,
 				C3B9C71D1FE9C02E003F5377 /* CustomTextField.swift in Sources */,
+				CE17B4141FF012F400F51DCC /* AddLocationViewController.swift in Sources */,
 				C3A944211FEDAB8F007A1618 /* AddLocationStep1ViewController.swift in Sources */,
 				CE17B4121FF003E300F51DCC /* UdacityDeleteSession.swift in Sources */,
 			);

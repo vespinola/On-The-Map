@@ -18,6 +18,27 @@ class ListViewController: UIViewController {
 
         students = ParseHandler.sharedInstance().studentsLocation
     }
+    
+    @IBAction func logoutButtonOnTap(_ sender: Any) {
+        Util.performLogout(in: self, with: {
+            ParseHandler.sharedInstance().clearCache()
+            UdacityHandler.sharedInstance().clearCache()
+        })
+    }
+    
+    @IBAction func addLocatonButtonOnTap(_ sender: Any) {
+        performSegue(withIdentifier: "addLocationStep1FromSecondTab", sender: nil)
+    }
+    
+    @IBAction func refreshButtonOnTap(_ sender: Any) {
+        ParseHandler.sharedInstance().getStudentLocation(in: self) { students in
+            performUIUpdatesOnMain {
+                ParseHandler.sharedInstance().studentsLocation = students
+                self.students = students
+                self.listTableView.reloadData()
+            }
+        }
+    }
 }
 
 extension ListViewController: UITableViewDelegate {
