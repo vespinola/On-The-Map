@@ -23,17 +23,8 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let student = students[indexPath.row]
-        
-        //from https://stackoverflow.com/a/39546889
-        guard let url = URL(string: student.mediaURL ?? "") else {
-            return //be safe
-        }
-        
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
+        guard let mediaURL = student.mediaURL else { return }
+        Util.openURL(with: mediaURL)
     }
 }
 

@@ -62,6 +62,19 @@ class Util {
             }
         })
     }
+    
+    class func openURL(with string: String) {
+        //from https://stackoverflow.com/a/39546889
+        guard let url = URL(string: string) else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
 }
 
 extension UIColor {

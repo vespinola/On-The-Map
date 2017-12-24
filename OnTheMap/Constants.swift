@@ -21,5 +21,9 @@ class Constants: NSObject {
     struct Colors {
         static let lightBlue = UIColor(netHex: 0x02B3E4) // I am not good naming colors :(
     }
+    
+    struct Fonts {
+        static let standard = UIFont.boldSystemFont(ofSize: 15)
+    }
 
 }

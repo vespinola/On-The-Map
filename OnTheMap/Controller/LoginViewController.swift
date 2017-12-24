@@ -29,8 +29,8 @@ class LoginViewController: UIViewController {
         ]))
         
         titleAttributedString.append(NSMutableAttributedString(string: "Sign Up", attributes: [
-            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 15),
-            NSAttributedStringKey.foregroundColor : UIColor(netHex:  0x02B3E4)
+            NSAttributedStringKey.font: Constants.Fonts.standard,
+            NSAttributedStringKey.foregroundColor : Constants.Colors.lightBlue
         ]))
         
         registerButton.setAttributedTitle(titleAttributedString, for: .normal)
@@ -68,6 +68,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func registerButtonOnTap(_ sender: Any) {
-        
+        Util.openURL(with: "https://www.udacity.com/account/auth#!/signup")
     }
 }
