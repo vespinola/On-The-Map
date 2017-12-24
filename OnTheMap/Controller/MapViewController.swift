@@ -58,7 +58,10 @@ class MapViewController: UIViewController {
             
         }
         
-        self.mapView.addAnnotations(annotations)
+        performUIUpdatesOnMain {
+            self.mapView.addAnnotations(annotations)
+        }
+        
     }
     
     @IBAction func logoutButtonOnTap(_ sender: Any) {

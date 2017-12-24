@@ -23,6 +23,8 @@ class UdacityHandler {
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = Util.prepareForJsonBody(body)
+            
+            //"{\"udacity\": {\"username\": \"vladimir.espinola@gmail.com\", \"password\": \"Informatica456*+\"}}".data(using: .utf8)
         }
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -76,9 +78,10 @@ class UdacityHandler {
         components.scheme = UdacityHandler.Constants.ApiScheme
         components.host = UdacityHandler.Constants.ApiHost
         components.path = UdacityHandler.Constants.ApiPath + (withPathExtension ?? "")
-        components.queryItems = [URLQueryItem]()
         
         if let parameters = parameters {
+             components.queryItems = [URLQueryItem]()
+            
             for (key, value) in parameters {
                 let queryItem = URLQueryItem(name: key, value: "\(value)")
                 components.queryItems!.append(queryItem)
@@ -93,7 +96,13 @@ class UdacityHandler {
         
         var parsedResult: AnyObject! = nil
         do {
-            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+            let range = Range(5..<data.count)
+            let newData = data.subdata(in: range) /* subset response data! */
+            
+            parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject
+            
+            print(parsedResult)
+            
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))

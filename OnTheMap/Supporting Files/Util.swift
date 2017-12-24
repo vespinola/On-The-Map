@@ -10,6 +10,12 @@ import UIKit
 
 typealias OTMDictionary = [String: Any]
 
+func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
+    DispatchQueue.main.async {
+        updates()
+    }
+}
+
 class Util {
     class func showAlert(for message: String, in viewController: UIViewController) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
