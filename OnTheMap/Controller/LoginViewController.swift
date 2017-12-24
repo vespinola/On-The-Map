@@ -35,10 +35,36 @@ class LoginViewController: UIViewController {
         
         registerButton.setAttributedTitle(titleAttributedString, for: .normal)
         
+        passwordTextfield.isSecureTextEntry = true
+        
     }
 
     @IBAction func loginButtonOnTap(_ sender: Any) {
-        performSegue(withIdentifier: Constants.Segues.home, sender: nil)
+        guard let username = usernameTextfield.text, !username.isEmpty else {
+            Util.showAlert(for: "You must enter an username", in: self)
+            return
+        }
+        
+        guard let password = passwordTextfield.text, !password.isEmpty else {
+            Util.showAlert(for: "You must enter a password", in: self)
+            return
+        }
+        
+        let parameters = [
+            "username" : username,
+            "password" : password
+        ]
+        
+        [usernameTextfield, passwordTextfield].forEach {
+            $0?.resignFirstResponder()
+        }
+        
+        UdacityHandler.sharedInstance().postSession(with: parameters, in: self, onCompletion: { session in
+            UdacityHandler.sharedInstance().udacitySession = session
+            self.performSegue(withIdentifier: Constants.Segues.home, sender: nil)
+            print(session)
+        })
+        
     }
     
     @IBAction func registerButtonOnTap(_ sender: Any) {

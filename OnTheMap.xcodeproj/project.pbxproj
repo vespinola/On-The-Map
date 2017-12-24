@@ -19,6 +19,9 @@
 		CE76F0CE1FEDFC240067FDFC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76F0CD1FEDFC240067FDFC /* CustomButton.swift */; };
 		CE87E3251FEEFFA500E9321C /* ParseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E3241FEEFFA500E9321C /* ParseHandler.swift */; };
 		CE87E3271FEF1EB600E9321C /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E3261FEF1EB600E9321C /* ListViewController.swift */; };
+		CE87E3291FEF2ACF00E9321C /* UdacityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E3281FEF2ACF00E9321C /* UdacityHandler.swift */; };
+		CE87E32B1FEF30E500E9321C /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E32A1FEF30E500E9321C /* UdacityConvenience.swift */; };
+		CE87E32D1FEF31FA00E9321C /* UdacityPostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E32C1FEF31FA00E9321C /* UdacityPostSession.swift */; };
 		CE9A81151FEE98F800B12203 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A81141FEE98F800B12203 /* StudentLocation.swift */; };
 		CE9A81171FEEABD800B12203 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A81161FEEABD800B12203 /* ParseConvenience.swift */; };
 		CEF608DA1FE9F8AD00076339 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608D91FE9F8AD00076339 /* Util.swift */; };
@@ -39,6 +42,9 @@
 		CE76F0CD1FEDFC240067FDFC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CE87E3241FEEFFA500E9321C /* ParseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseHandler.swift; sourceTree = "<group>"; };
 		CE87E3261FEF1EB600E9321C /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		CE87E3281FEF2ACF00E9321C /* UdacityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityHandler.swift; sourceTree = "<group>"; };
+		CE87E32A1FEF30E500E9321C /* UdacityConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
+		CE87E32C1FEF31FA00E9321C /* UdacityPostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityPostSession.swift; sourceTree = "<group>"; };
 		CE9A81141FEE98F800B12203 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		CE9A81161FEEABD800B12203 /* ParseConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
 		CEF608D91FE9F8AD00076339 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -99,6 +105,9 @@
 		CE429A911FEEB4960091A54F /* Udacity */ = {
 			isa = PBXGroup;
 			children = (
+				CE87E3281FEF2ACF00E9321C /* UdacityHandler.swift */,
+				CE87E32A1FEF30E500E9321C /* UdacityConvenience.swift */,
+				CE87E32C1FEF31FA00E9321C /* UdacityPostSession.swift */,
 			);
 			path = Udacity;
 			sourceTree = "<group>";
@@ -219,11 +228,14 @@
 				CE87E3271FEF1EB600E9321C /* ListViewController.swift in Sources */,
 				C3B393BE1FE86F9200DB1F52 /* MapViewController.swift in Sources */,
 				C3B393BC1FE86F9200DB1F52 /* AppDelegate.swift in Sources */,
+				CE87E32B1FEF30E500E9321C /* UdacityConvenience.swift in Sources */,
+				CE87E32D1FEF31FA00E9321C /* UdacityPostSession.swift in Sources */,
 				CE87E3251FEEFFA500E9321C /* ParseHandler.swift in Sources */,
 				CEF608DA1FE9F8AD00076339 /* Util.swift in Sources */,
 				CE9A81171FEEABD800B12203 /* ParseConvenience.swift in Sources */,
 				CE76F0CE1FEDFC240067FDFC /* CustomButton.swift in Sources */,
 				C3B9C71A1FE98AB0003F5377 /* Constants.swift in Sources */,
+				CE87E3291FEF2ACF00E9321C /* UdacityHandler.swift in Sources */,
 				C3B9C71D1FE9C02E003F5377 /* CustomTextField.swift in Sources */,
 				C3A944211FEDAB8F007A1618 /* AddLocationStep1ViewController.swift in Sources */,
 			);

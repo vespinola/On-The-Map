@@ -88,7 +88,7 @@
                                         <rect key="frame" x="0.0" y="106" width="335" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLC-4r-328" customClass="CustomButton" customModule="OnTheMap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="154" width="335" height="40"/>

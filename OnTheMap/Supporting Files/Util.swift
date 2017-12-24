@@ -16,6 +16,11 @@ class Util {
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: nil))
         viewController.present(alert, animated: true, completion: nil)
     }
+    
+    class func prepareForJsonBody(_ dictionary: OTMDictionary) -> Data? {
+        let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: [])
+        return jsonData
+    }
 }
 
 extension UIColor {
