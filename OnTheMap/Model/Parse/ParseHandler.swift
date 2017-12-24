@@ -8,24 +8,6 @@
 
 import UIKit
 
-enum HTTPMethod {
-    case post
-    case get
-    case put
-    
-    func method() -> String {
-        switch self {
-        case .post:
-            return "POST"
-        case .put:
-            return "PUT"
-        default:
-            return "GET"
-        }
-    }
-}
-
-
 class ParseHandler: NSObject {
     // shared session
     var studentsLocation: [StudentLocation] = []
@@ -53,33 +35,25 @@ class ParseHandler: NSObject {
                 completionHandler(nil, NSError(domain: "taskForMethod", code: 1, userInfo: userInfo))
             }
             
-            /* GUARD: Was there an error? */
             guard (error == nil) else {
                 sendError("There was an error with your request: \(error!)")
                 return
             }
             
-            /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 sendError("Your request returned a status code other than 2xx!")
                 return
             }
             
-            /* GUARD: Was there any data returned? */
             guard let data = data else {
                 sendError("No data was returned by the request!")
                 return
             }
             
-            /* 5/6. Parse the data and use the data (happens in completion handler) */
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
         }
         
-        /* 7. Start the request */
-        task.resume()
-        
-//        return task
-        
+        task.resume()        
     }
     
     func clearCache() {

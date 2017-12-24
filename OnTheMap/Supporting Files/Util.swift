@@ -10,6 +10,26 @@ import UIKit
 
 typealias OTMDictionary = [String: Any]
 
+enum HTTPMethod {
+    case post
+    case get
+    case put
+    case delete
+    
+    func method() -> String {
+        switch self {
+        case .post:
+            return "POST"
+        case .put:
+            return "PUT"
+        case .delete:
+            return "DELETE"
+        default:
+            return "GET"
+        }
+    }
+}
+
 func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
     DispatchQueue.main.async {
         updates()
@@ -26,6 +46,21 @@ class Util {
     class func prepareForJsonBody(_ dictionary: OTMDictionary) -> Data? {
         let jsonData = try? JSONSerialization.data(withJSONObject: dictionary, options: [])
         return jsonData
+    }
+    
+    class func performLogout(in viewController: UIViewController, with callback: @escaping () -> Void) {
+        UdacityHandler.sharedInstance().deleteSession(in: viewController, onCompletion: { _ in
+            performUIUpdatesOnMain {
+                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewControllerID") as! LoginViewController
+                
+                UIView.transition(with: viewController.view, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+                    appdelegate.window!.rootViewController = homeViewController
+                    callback()
+                }, completion: nil)
+            }
+        })
     }
 }
 

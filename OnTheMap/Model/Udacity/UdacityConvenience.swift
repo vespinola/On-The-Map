@@ -29,4 +29,20 @@ extension UdacityHandler {
         })
     }
     
+    func deleteSession(in viewController: UIViewController, onCompletion: @escaping (UdacityDeleteSession) -> Void) {
+        
+        let _ = UdacityHandler.sharedInstance().request(verb: .delete, method: UdacityHandler.Methods.Session, completionHandler: { data, error in
+            guard error == nil else {
+                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                return
+            }
+            
+            guard let dictionary = data as? OTMDictionary else { return }
+            
+            let session = UdacityDeleteSession(dictionary: dictionary)
+            
+            onCompletion(session)
+        })
+    }
+    
 }

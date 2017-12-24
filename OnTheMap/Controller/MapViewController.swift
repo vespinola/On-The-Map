@@ -65,14 +65,10 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func logoutButtonOnTap(_ sender: Any) {
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewControllerID") as! LoginViewController
-        
-        UIView.transition(with: self.view, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+        Util.performLogout(in: self) {
             ParseHandler.sharedInstance().clearCache()
-            appdelegate.window!.rootViewController = homeViewController
-        }, completion: nil)
+            UdacityHandler.sharedInstance().clearCache()
+        }
     }
     
     @IBAction func addLocationOnTap(_ sender: Any) {

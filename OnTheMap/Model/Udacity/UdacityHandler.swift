@@ -24,8 +24,17 @@ class UdacityHandler {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = Util.prepareForJsonBody(body)
             
-            //"{\"udacity\": {\"username\": \"vladimir.espinola@gmail.com\", \"password\": \"Informatica456*+\"}}".data(using: .utf8)
+        } else if verb == .delete {
+            var xsrfCookie: HTTPCookie? = nil
+            let sharedCookieStorage = HTTPCookieStorage.shared
+            for cookie in sharedCookieStorage.cookies! {
+                if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+            }
+            if let xsrfCookie = xsrfCookie {
+                request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+            }
         }
+        
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
@@ -35,29 +44,24 @@ class UdacityHandler {
                 completionHandler(nil, NSError(domain: "taskForMethod", code: 1, userInfo: userInfo))
             }
             
-            /* GUARD: Was there an error? */
             guard (error == nil) else {
                 sendError("There was an error with your request: \(error!)")
                 return
             }
             
-            /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 sendError("Your request returned a status code other than 2xx!")
                 return
             }
             
-            /* GUARD: Was there any data returned? */
             guard let data = data else {
                 sendError("No data was returned by the request!")
                 return
             }
             
-            /* 5/6. Parse the data and use the data (happens in completion handler) */
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
         }
         
-        /* 7. Start the request */
         task.resume()
     }
     
@@ -97,11 +101,9 @@ class UdacityHandler {
         var parsedResult: AnyObject! = nil
         do {
             let range = Range(5..<data.count)
-            let newData = data.subdata(in: range) /* subset response data! */
+            let newData = data.subdata(in: range)
             
             parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject
-            
-            print(parsedResult)
             
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
