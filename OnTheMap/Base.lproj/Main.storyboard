@@ -63,14 +63,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3281" y="-384"/>
+            <point key="canvasLocation" x="3516" y="-384"/>
         </scene>
         <!--Add Location-->
         <scene sceneID="t8E-mS-x75">
             <objects>
-                <viewController title="Add Location" id="8hc-GO-Vgl" customClass="AddLocationStep1ViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FindLocationViewControllerID" title="Add Location" id="8hc-GO-Vgl" customClass="FindLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VCc-Ng-Cwi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="un0-SF-SWi">
@@ -125,12 +125,14 @@
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="infoTextField" destination="Rdm-gV-7wc" id="veM-gS-5PV"/>
                         <outlet property="locationImageView" destination="JHA-nr-pLk" id="rXS-qC-tGi"/>
+                        <outlet property="locationTextField" destination="Ai0-PC-Ecu" id="ocz-2I-4oP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHh-KA-KWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4878" y="413"/>
+            <point key="canvasLocation" x="5382" y="371"/>
         </scene>
         <!--Add Location View Controller-->
         <scene sceneID="7Nq-sY-OKX">
@@ -158,30 +160,17 @@
                                     <barButtonItem systemItem="flexibleSpace" id="JhT-27-udc"/>
                                 </items>
                             </toolbar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHg-vf-Szo">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <connections>
-                                    <segue destination="QTh-n8-wbs" kind="embed" id="GwX-Em-0ky"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyX-E2-ci0">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <connections>
-                                    <segue destination="8hc-GO-Vgl" kind="embed" id="8z7-js-uzC"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="JHg-vf-Szo" firstAttribute="trailing" secondItem="IyX-E2-ci0" secondAttribute="trailing" id="6Ku-xw-ODk"/>
-                            <constraint firstItem="JHg-vf-Szo" firstAttribute="top" secondItem="IyX-E2-ci0" secondAttribute="top" id="B2w-dF-w3M"/>
                             <constraint firstItem="IyX-E2-ci0" firstAttribute="leading" secondItem="3fB-mp-hXf" secondAttribute="leading" id="Cbv-XF-GBf"/>
                             <constraint firstItem="3fB-mp-hXf" firstAttribute="trailing" secondItem="IyX-E2-ci0" secondAttribute="trailing" id="IGz-EF-viR"/>
                             <constraint firstItem="IyX-E2-ci0" firstAttribute="top" secondItem="RdC-o5-hmd" secondAttribute="bottom" id="aDp-wO-wjU"/>
                             <constraint firstItem="3fB-mp-hXf" firstAttribute="bottom" secondItem="IyX-E2-ci0" secondAttribute="bottom" id="g1U-7V-Iw1"/>
                             <constraint firstItem="3fB-mp-hXf" firstAttribute="top" secondItem="RdC-o5-hmd" secondAttribute="top" id="h8X-Ur-qdI"/>
-                            <constraint firstItem="JHg-vf-Szo" firstAttribute="bottom" secondItem="IyX-E2-ci0" secondAttribute="bottom" id="mhr-LA-pXs"/>
-                            <constraint firstItem="JHg-vf-Szo" firstAttribute="leading" secondItem="IyX-E2-ci0" secondAttribute="leading" id="nnz-RX-HAy"/>
                             <constraint firstItem="RdC-o5-hmd" firstAttribute="leading" secondItem="3fB-mp-hXf" secondAttribute="leading" id="q7y-86-3P9"/>
                             <constraint firstItem="3fB-mp-hXf" firstAttribute="trailing" secondItem="RdC-o5-hmd" secondAttribute="trailing" id="r63-MW-Igi"/>
                         </constraints>
@@ -189,29 +178,28 @@
                     </view>
                     <connections>
                         <outlet property="firstContainer" destination="IyX-E2-ci0" id="BhP-hM-DxZ"/>
-                        <outlet property="secondContainer" destination="JHg-vf-Szo" id="cei-Ht-ZcJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkA-B0-ebc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4112.8000000000002" y="-5.8470764617691158"/>
+            <point key="canvasLocation" x="4548" y="10"/>
         </scene>
         <!--Add Location-->
         <scene sceneID="MJZ-7p-E5h">
             <objects>
-                <viewController title="Add Location" id="QTh-n8-wbs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FinishLocationViewControllerID" title="Add Location" id="QTh-n8-wbs" customClass="FinishLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vAN-AC-Z0j">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FxN-gN-Arb">
-                                <rect key="frame" x="0.0" y="20" width="375" height="583"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <connections>
                                     <outlet property="delegate" destination="QTh-n8-wbs" id="GRF-V9-RCT"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIC-Dz-jUo" customClass="CustomButton" customModule="OnTheMap" customModuleProvider="target">
-                                <rect key="frame" x="20" y="543" width="335" height="40"/>
+                                <rect key="frame" x="20" y="607" width="335" height="40"/>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0yc-0y-6qf"/>
@@ -220,6 +208,9 @@
                                 <state key="normal" title="FINISH">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="finishButtonOnTap:" destination="QTh-n8-wbs" eventType="touchUpInside" id="1v2-Ye-0V0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -239,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bi0-rL-Ibg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4877.6000000000004" y="-385.45727136431788"/>
+            <point key="canvasLocation" x="5382" y="-456"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PFe-tv-qcS">
@@ -342,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q7o-tZ-1OV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3281" y="371"/>
+            <point key="canvasLocation" x="3567" y="371"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="i00-WI-Qk2">

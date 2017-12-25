@@ -8,24 +8,20 @@
 
 import UIKit
 
-class AddLocationStep1ViewController: UIViewController {
+class FindLocationViewController: UIViewController {
     @IBOutlet weak var locationImageView: UIImageView!
+    @IBOutlet weak var locationTextField: CustomTextField!
+    @IBOutlet weak var infoTextField: CustomTextField!
+    
+    var delegate: AddLocationProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         tabBarController?.tabBar.isHidden = true
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    
-
     @IBAction func findLocationOnTap(_ sender: Any) {
-        performSegue(withIdentifier: "addLocationStep2", sender: nil)
+        delegate.findLocation()
     }
 }

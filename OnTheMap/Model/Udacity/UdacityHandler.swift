@@ -10,6 +10,7 @@ import UIKit
 
 class UdacityHandler {
     var udacitySession: UdacityPostSession!
+    var udacityUserData: OTMDictionary!
     
     var session = URLSession.shared
     
@@ -67,6 +68,7 @@ class UdacityHandler {
     
     func clearCache() {
         udacitySession = nil
+        udacityUserData = nil
     }
     
     class func sharedInstance() -> UdacityHandler {
@@ -124,5 +126,6 @@ extension UdacityHandler {
     
     struct Methods {
         static let Session = "/session"
+        static let Users = "/users"
     }
 }

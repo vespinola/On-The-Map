@@ -15,7 +15,7 @@ extension UdacityHandler {
             "udacity" : parameters
         ]
         
-        let _ = UdacityHandler.sharedInstance().request(method: UdacityHandler.Methods.Session, jsonBody: parametersWrapper, completionHandler: { data, error in
+        UdacityHandler.sharedInstance().request(method: UdacityHandler.Methods.Session, jsonBody: parametersWrapper, completionHandler: { data, error in
             guard error == nil else {
                 Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
                 return
@@ -31,7 +31,7 @@ extension UdacityHandler {
     
     func deleteSession(in viewController: UIViewController, onCompletion: @escaping (UdacityDeleteSession) -> Void) {
         
-        let _ = UdacityHandler.sharedInstance().request(verb: .delete, method: UdacityHandler.Methods.Session, completionHandler: { data, error in
+        UdacityHandler.sharedInstance().request(verb: .delete, method: UdacityHandler.Methods.Session, completionHandler: { data, error in
             guard error == nil else {
                 Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
                 return
@@ -45,4 +45,19 @@ extension UdacityHandler {
         })
     }
     
+    func getUserData(in viewController: UIViewController, onCompletion: @escaping (OTMDictionary) -> Void) {
+        let sessionKey = UdacityHandler.sharedInstance().udacitySession.account.key!
+        
+        UdacityHandler.sharedInstance().request(verb: .get, method: UdacityHandler.Methods.Users + "/\(sessionKey)", completionHandler: { data, error in
+            guard error == nil else {
+                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                return
+            }
+            
+            guard let dictionary = data as? OTMDictionary else { return }
+            
+            onCompletion(dictionary["user"] as! OTMDictionary)
+        
+        })
+    }    
 }

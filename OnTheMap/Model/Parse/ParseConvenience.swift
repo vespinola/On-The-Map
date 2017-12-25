@@ -14,7 +14,7 @@ extension ParseHandler {
             "limit" : 100
         ]
         
-        let _ = ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, parameters: parameters, completionHandler: { data, error in
+        ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, parameters: parameters, completionHandler: { data, error in
             guard error == nil else {
                 Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
                 return
@@ -27,6 +27,31 @@ extension ParseHandler {
             ParseHandler.sharedInstance().studentsLocation = students
             
             onCompletion(students)
+        })
+    }
+    
+    func getLoggedUserLocation(in viewController: UIViewController, onCompletion: @escaping (StudentLocation) -> Void) {
+        
+        let uniqueKeyParameter: OTMDictionary = [
+            "uniqueKey" : UdacityHandler.sharedInstance().udacityUserData["key"]!
+        ]
+        
+        let parameters: OTMDictionary = [
+            "where" : uniqueKeyParameter,
+            "limit" : 1
+        ]
+        
+        ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, parameters: parameters, completionHandler: { data, error in
+            guard error == nil else {
+                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                return
+            }
+            
+            guard let array = data as? OTMDictionary else { return }
+            
+            let students = StudentLocation.studentLocationsFromResults(array["results"] as! [OTMDictionary])
+            
+            onCompletion(students.first!)
         })
     }
     

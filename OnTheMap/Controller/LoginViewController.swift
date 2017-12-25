@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,9 +61,16 @@ class LoginViewController: UIViewController {
         }
         
         UdacityHandler.sharedInstance().postSession(with: parameters, in: self, onCompletion: { session in
+            
             UdacityHandler.sharedInstance().udacitySession = session
-            self.performSegue(withIdentifier: Constants.Segues.home, sender: nil)
-            print(session)
+            
+            UdacityHandler.sharedInstance().getUserData(in: self) { userData in
+                
+                UdacityHandler.sharedInstance().udacityUserData = userData
+                
+                self.performSegue(withIdentifier: Constants.Segues.home, sender: nil)
+            }
+            
         })
         
     }
