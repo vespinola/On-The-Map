@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 typealias OTMDictionary = [String: Any]
 
@@ -74,6 +75,34 @@ class Util {
         } else {
             UIApplication.shared.openURL(url)
         }
+    }
+    
+    class func createAnnotations(with studentsLocation: [StudentLocation]) -> [MKPointAnnotation]{
+        var annotations:[MKPointAnnotation] = []
+        
+        studentsLocation.forEach { student in
+            
+            if let studentLat = student.latitude, let studentLong = student.longitude {
+                let lat = CLLocationDegrees(studentLat)
+                let long = CLLocationDegrees(studentLong)
+                
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                
+                let first = student.firstName!
+                let last = student.lastName!
+                let mediaURL = student.mediaURL!
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = "\(first) \(last)"
+                annotation.subtitle = mediaURL
+                
+                annotations.append(annotation)
+            }
+            
+        }
+        
+        return annotations
     }
 }
 

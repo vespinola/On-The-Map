@@ -34,32 +34,9 @@ class MapViewController: UIViewController {
     }
     
     func performStudentLocation(_ students: [StudentLocation]) {
-        var annotations:[MKPointAnnotation] = []
-        
-        students.forEach { student in
-            
-            if let studentLat = student.latitude, let studentLong = student.longitude {
-                let lat = CLLocationDegrees(studentLat)
-                let long = CLLocationDegrees(studentLong)
-                
-                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                
-                let first = student.firstName!
-                let last = student.lastName!
-                let mediaURL = student.mediaURL!
-                
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title = "\(first) \(last)"
-                annotation.subtitle = mediaURL
-                
-                annotations.append(annotation)
-            }
-            
-        }
         
         performUIUpdatesOnMain {
-            self.mapView.addAnnotations(annotations)
+            self.mapView.addAnnotations(Util.createAnnotations(with: students))
         }
         
     }
@@ -87,7 +64,6 @@ class MapViewController: UIViewController {
     
 }
 
-
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseId = "pin"
@@ -114,8 +90,4 @@ extension MapViewController: MKMapViewDelegate {
             }
         }
     }
-}
-
-extension MapViewController {
-    //MARK: Helpers
 }

@@ -30,14 +30,10 @@ extension ParseHandler {
         })
     }
     
-    func getLoggedUserLocation(in viewController: UIViewController, onCompletion: @escaping (StudentLocation) -> Void) {
-        
-        let uniqueKeyParameter: OTMDictionary = [
-            "uniqueKey" : UdacityHandler.sharedInstance().udacityUserData["key"]!
-        ]
+    func getLoggedUserLocation(in viewController: UIViewController, onCompletion: @escaping (StudentLocation?) -> Void) {
         
         let parameters: OTMDictionary = [
-            "where" : uniqueKeyParameter,
+            "where" : "{\"uniqueKey\":\"\(UdacityHandler.sharedInstance().udacityUserData["key"]!)\"}",
             "limit" : 1
         ]
         
@@ -51,7 +47,7 @@ extension ParseHandler {
             
             let students = StudentLocation.studentLocationsFromResults(array["results"] as! [OTMDictionary])
             
-            onCompletion(students.first!)
+            onCompletion(students.first)
         })
     }
     

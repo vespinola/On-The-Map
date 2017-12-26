@@ -19,7 +19,7 @@ class AddLocationViewController: UIViewController {
     @IBOutlet weak var firstContainer: UIView!
     
     var findLocationViewController: FindLocationViewController?
-    var finishLocationViewController: FinishLocationViewController?
+//    var finishLocationViewController: FinishLocationViewController?
     
     private var activeViewController: UIViewController? {
         didSet {
@@ -36,10 +36,7 @@ class AddLocationViewController: UIViewController {
     func setup() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        finishLocationViewController = storyboard.instantiateViewController(withIdentifier: "FinishLocationViewControllerID") as? FinishLocationViewController
         findLocationViewController = storyboard.instantiateViewController(withIdentifier: "FindLocationViewControllerID") as? FindLocationViewController
-        
-        finishLocationViewController?.delegate = self
         findLocationViewController?.delegate = self
         
         activeViewController = findLocationViewController
@@ -74,7 +71,20 @@ class AddLocationViewController: UIViewController {
 
 extension AddLocationViewController: AddLocationProtocol {
     func findLocation() {
-        activeViewController = finishLocationViewController
+        
+        ParseHandler.sharedInstance().getLoggedUserLocation(in: self, onCompletion: { studentLocation in
+            
+            performUIUpdatesOnMain {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let finishLocationViewController = storyboard.instantiateViewController(withIdentifier: "FinishLocationViewControllerID") as? FinishLocationViewController
+                finishLocationViewController?.delegate = self
+                finishLocationViewController?.studentLocation = studentLocation
+                
+                self.activeViewController = finishLocationViewController
+            }
+            
+        })
+        
     }
     
     func finish() {

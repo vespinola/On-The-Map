@@ -44,6 +44,7 @@ struct StudentLocation {
         
         return movies
     }
+
 }
 
 // MARK: - TMDBMovie: Equatable
