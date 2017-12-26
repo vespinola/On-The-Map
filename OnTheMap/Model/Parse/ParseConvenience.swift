@@ -80,5 +80,24 @@ extension ParseHandler {
         })
     }
     
+    func postStudentLocation(with parameters: OTMDictionary, in viewController: UIViewController, onCompletion: @escaping (StudentLocation) -> Void) {
+        
+        ParseHandler.sharedInstance().request(verb: .post, method: ParseHandler.Methods.StudentLocation, jsonBody: parameters, completionHandler: { data, error in
+            guard error == nil else {
+                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                return
+            }
+            
+            guard let createData = data as? OTMDictionary else { return }
+            
+            var newStudentLocation = StudentLocation(dictionary: parameters)
+            
+            newStudentLocation.createdAt = createData["createdAt"] as? String
+            newStudentLocation.objectId = createData["objectId"] as? String
+            
+            onCompletion(newStudentLocation)
+        })
+    }
+    
 }
 

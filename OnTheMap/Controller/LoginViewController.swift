@@ -37,6 +37,7 @@ class LoginViewController: UIViewController {
         registerButton.setAttributedTitle(titleAttributedString, for: .normal)
         
         passwordTextfield.isSecureTextEntry = true
+        usernameTextfield.keyboardType = .emailAddress
         
     }
 

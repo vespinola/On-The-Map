@@ -102,8 +102,21 @@ extension AddLocationViewController: AddLocationProtocol {
                     
                 } else {
                     
+                    let userData = UdacityHandler.sharedInstance().udacityUserData!
                     
+                    let studentData: OTMDictionary = [
+                        "uniqueKey" : userData["key"]!,
+                        "firstName" : userData["first_name"]!,
+                        "lastName" : userData["last_name"]!,
+                        "mapString" : stringQuery,
+                        "mediaURL" : link,
+                        "latitude" : mapItem.placemark.coordinate.latitude,
+                        "longitude" : mapItem.placemark.coordinate.longitude
+                    ]
                     
+                    ParseHandler.sharedInstance().postStudentLocation(with: studentData, in: self, onCompletion: { studentLocation in
+                        performFinishLocationViewController(studentLocation)
+                    })
                 }
                 
             })

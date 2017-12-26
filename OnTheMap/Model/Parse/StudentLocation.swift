@@ -9,7 +9,7 @@
 import UIKit
 
 struct StudentLocation {
-    let objectId: String?
+    var objectId: String?
     let uniqueKey: String?
     let firstName: String?
     let lastName: String?
