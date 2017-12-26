@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginButtonOnTap(_ sender: Any) {
         guard let username = usernameTextfield.text, !username.isEmpty else {
-            Util.showAlert(for: "You must enter an username", in: self)
+            Util.showAlert(for: "You must enter an email", in: self)
             return
         }
         

@@ -60,8 +60,6 @@ class MapViewController: UIViewController {
             }
         }
     }
-    
-    
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -83,11 +81,8 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
-            if let toOpen = view.annotation?.subtitle {
-                app.openURL(URL(string: toOpen!)!)
-            }
+        if let toOpen = view.annotation?.subtitle, control == view.rightCalloutAccessoryView {
+            Util.openURL(with: toOpen ?? "")
         }
     }
 }

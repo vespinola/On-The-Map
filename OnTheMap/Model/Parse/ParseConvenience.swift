@@ -51,5 +51,34 @@ extension ParseHandler {
         })
     }
     
+    func updateLoggedUserLocation(for studentLocation: StudentLocation, in viewController: UIViewController, onCompletion: @escaping (StudentLocation) -> Void) {
+        
+        
+        let parameters: OTMDictionary = [
+            "uniqueKey" : studentLocation.uniqueKey!,
+            "firstName" : studentLocation.firstName!,
+            "lastName" : studentLocation.lastName!,
+            "mapString" : studentLocation.mapString!,
+            "mediaURL" : studentLocation.mediaURL!,
+            "latitude" : studentLocation.latitude!,
+            "longitude" : studentLocation.longitude!,
+        ]
+        
+        ParseHandler.sharedInstance().request(verb: .put, method: ParseHandler.Methods.StudentLocation + "/\(studentLocation.objectId!)", jsonBody: parameters, completionHandler: { data, error in
+            guard error == nil else {
+                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                return
+            }
+            
+            guard let updateData = data as? OTMDictionary else { return }
+            
+            var updatedStudentLocation = studentLocation
+            
+            updatedStudentLocation.updatedAt = updateData["updatedAt"] as? String
+            
+            onCompletion(updatedStudentLocation)
+        })
+    }
+    
 }
 

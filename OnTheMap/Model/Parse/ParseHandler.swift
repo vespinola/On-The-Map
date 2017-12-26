@@ -14,7 +14,7 @@ class ParseHandler: NSObject {
     
     var session = URLSession.shared
     
-    func request(verb: HTTPMethod = .get, method: String, in viewController: UIViewController? = nil, parameters: OTMDictionary, jsonBody: OTMDictionary? = nil, completionHandler: @escaping( _ result: Any?, _ error: NSError?) -> Void) {
+    func request(verb: HTTPMethod = .get, method: String, in viewController: UIViewController? = nil, parameters: OTMDictionary? = nil, jsonBody: OTMDictionary? = nil, completionHandler: @escaping( _ result: Any?, _ error: NSError?) -> Void) {
     
         let request = NSMutableURLRequest(url: URLFromParameters(parameters, withPathExtension: method))
         request.httpMethod = verb.method()
@@ -22,6 +22,9 @@ class ParseHandler: NSObject {
         request.addValue(ParseHandler.Constants.ApiKey, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(ParseHandler.Constants.RestApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
+        if let jsonBody = jsonBody {
+            request.httpBody = Util.prepareForJsonBody(jsonBody)
+        }
         
         if verb == .put || verb == .post {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -71,7 +74,7 @@ class ParseHandler: NSObject {
         return Singleton.sharedInstance
     }
     
-    private func URLFromParameters(_ parameters: OTMDictionary, withPathExtension: String? = nil) -> URL {
+    private func URLFromParameters(_ parameters: OTMDictionary?, withPathExtension: String? = nil) -> URL {
         
         var components = URLComponents()
         components.scheme = ParseHandler.Constants.ApiScheme
@@ -79,9 +82,11 @@ class ParseHandler: NSObject {
         components.path = ParseHandler.Constants.ApiPath + (withPathExtension ?? "")
         components.queryItems = [URLQueryItem]()
         
-        for (key, value) in parameters {
-            let queryItem = URLQueryItem(name: key, value: "\(value)")
-            components.queryItems!.append(queryItem)
+        if let parameters = parameters {
+            for (key, value) in parameters {
+                let queryItem = URLQueryItem(name: key, value: "\(value)")
+                components.queryItems!.append(queryItem)
+            }
         }
         
         return components.url!

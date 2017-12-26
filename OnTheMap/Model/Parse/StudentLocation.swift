@@ -13,12 +13,12 @@ struct StudentLocation {
     let uniqueKey: String?
     let firstName: String?
     let lastName: String?
-    let mapString: String?
-    let mediaURL: String?
-    let latitude: Double?
-    let longitude: Double?
-    let createdAt: Date?
-    let updatedAt: Date?
+    var mapString: String?
+    var mediaURL: String?
+    var latitude: Double?
+    var longitude: Double?
+    var createdAt: String?
+    var updatedAt: String?
     
     init(dictionary: OTMDictionary) {
         uniqueKey = dictionary["uniqueKey"] as? String
@@ -29,20 +29,20 @@ struct StudentLocation {
         mediaURL = dictionary["mediaURL"] as? String
         latitude = dictionary["latitude"] as? Double
         longitude = dictionary["longitude"] as? Double
-        createdAt = dictionary["createdAt"] as? Date
-        updatedAt = dictionary["updatedAt"] as? Date
+        createdAt = dictionary["createdAt"] as? String
+        updatedAt = dictionary["updatedAt"] as? String
     }
     
     static func studentLocationsFromResults(_ results: [OTMDictionary]) -> [StudentLocation] {
         
-        var movies = [StudentLocation]()
+        var students = [StudentLocation]()
         
         // iterate through array of dictionaries, each Movie is a dictionary
         for result in results {
-            movies.append(StudentLocation(dictionary: result))
+            students.append(StudentLocation(dictionary: result))
         }
         
-        return movies
+        return students
     }
 
 }

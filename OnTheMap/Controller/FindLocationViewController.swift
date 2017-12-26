@@ -22,6 +22,16 @@ class FindLocationViewController: UIViewController {
     }
     
     @IBAction func findLocationOnTap(_ sender: Any) {
-        delegate.findLocation()
+        guard let location = locationTextField.text, !location.isEmpty else {
+            Util.showAlert(for: "You must enter a location", in: self)
+            return
+        }
+        
+        guard let link = infoTextField.text, !link.isEmpty else {
+            Util.showAlert(for: "You must enter a link", in: self)
+            return
+        }
+        
+        delegate.findLocation(with: location, and: link)
     }
 }

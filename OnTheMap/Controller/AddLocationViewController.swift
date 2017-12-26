@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import MapKit
 
 protocol AddLocationProtocol {
-    func findLocation()
+    func findLocation(with query: String, and link: String)
     func finish()
 }
 
@@ -17,9 +18,6 @@ protocol AddLocationProtocol {
 
 class AddLocationViewController: UIViewController {
     @IBOutlet weak var firstContainer: UIView!
-    
-    var findLocationViewController: FindLocationViewController?
-//    var finishLocationViewController: FinishLocationViewController?
     
     private var activeViewController: UIViewController? {
         didSet {
@@ -36,7 +34,7 @@ class AddLocationViewController: UIViewController {
     func setup() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        findLocationViewController = storyboard.instantiateViewController(withIdentifier: "FindLocationViewControllerID") as? FindLocationViewController
+        let findLocationViewController = storyboard.instantiateViewController(withIdentifier: "FindLocationViewControllerID") as? FindLocationViewController
         findLocationViewController?.delegate = self
         
         activeViewController = findLocationViewController
@@ -70,10 +68,9 @@ class AddLocationViewController: UIViewController {
 }
 
 extension AddLocationViewController: AddLocationProtocol {
-    func findLocation() {
+    func findLocation(with stringQuery: String, and link: String) {
         
-        ParseHandler.sharedInstance().getLoggedUserLocation(in: self, onCompletion: { studentLocation in
-            
+        let performFinishLocationViewController: (StudentLocation) -> Void = { studentLocation in
             performUIUpdatesOnMain {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let finishLocationViewController = storyboard.instantiateViewController(withIdentifier: "FinishLocationViewControllerID") as? FinishLocationViewController
@@ -82,6 +79,34 @@ extension AddLocationViewController: AddLocationProtocol {
                 
                 self.activeViewController = finishLocationViewController
             }
+        }
+        
+        
+        searchLocation(with: stringQuery, onCompletion: { mapItem in
+            
+            ParseHandler.sharedInstance().getLoggedUserLocation(in: self, onCompletion: { studentLocation in
+                
+                if let studentLocation = studentLocation {
+                    
+                    var updateStudentLocation = studentLocation
+                    
+                    updateStudentLocation.mapString = stringQuery
+                    updateStudentLocation.mediaURL = link
+                    updateStudentLocation.latitude = mapItem.placemark.coordinate.latitude
+                    updateStudentLocation.longitude = mapItem.placemark.coordinate.longitude
+                    
+                    
+                    ParseHandler.sharedInstance().updateLoggedUserLocation(for: updateStudentLocation, in: self, onCompletion: { updatedStudentLocation in
+                        performFinishLocationViewController(updatedStudentLocation)
+                    })
+                    
+                } else {
+                    
+                    
+                    
+                }
+                
+            })
             
         })
         
@@ -89,5 +114,25 @@ extension AddLocationViewController: AddLocationProtocol {
     
     func finish() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension AddLocationViewController {
+    //MARK: Helpers
+    
+    func searchLocation(with string: String, onCompletion: @escaping (MKMapItem) -> Void) {
+        let searchReq = MKLocalSearchRequest()
+        searchReq.naturalLanguageQuery = string
+//        searchReq.region = mapView.region
+        
+        let search = MKLocalSearch(request: searchReq)
+        search.start(completionHandler: { response, error in
+            guard let searchResponse = response, let firstPlace = searchResponse.mapItems.first, error == nil else {
+                return
+            }
+            
+            onCompletion(firstPlace)
+        })
+        
     }
 }
