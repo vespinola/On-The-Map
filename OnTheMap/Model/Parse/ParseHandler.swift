@@ -14,8 +14,8 @@ class ParseHandler: NSObject {
     
     var session = URLSession.shared
     
-    func request(verb: HTTPMethod = .get, method: String, parameters: OTMDictionary, jsonBody: OTMDictionary? = nil, completionHandler: @escaping( _ result: Any?, _ error: NSError?) -> Void) {//-> URLSessionDataTask {
-        
+    func request(verb: HTTPMethod = .get, method: String, in viewController: UIViewController? = nil, parameters: OTMDictionary, jsonBody: OTMDictionary? = nil, completionHandler: @escaping( _ result: Any?, _ error: NSError?) -> Void) {
+    
         let request = NSMutableURLRequest(url: URLFromParameters(parameters, withPathExtension: method))
         request.httpMethod = verb.method()
         
@@ -28,6 +28,8 @@ class ParseHandler: NSObject {
         }
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            
+            Util.showActivityIndicatory(in: viewController)
             
             func sendError(_ error: String) {
                 print(error)
@@ -51,6 +53,8 @@ class ParseHandler: NSObject {
             }
             
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
+            
+            Util.hideActivityIndicator()
         }
         
         task.resume()        

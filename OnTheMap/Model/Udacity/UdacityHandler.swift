@@ -14,7 +14,7 @@ class UdacityHandler {
     
     var session = URLSession.shared
     
-    func request(verb: HTTPMethod = .post, method: String, parameters: OTMDictionary? = nil, jsonBody: OTMDictionary? = nil, completionHandler: @escaping( _ result: Any?, _ error: NSError?) -> Void) {
+    func request(verb: HTTPMethod = .post, method: String, in viewController: UIViewController, parameters: OTMDictionary? = nil, jsonBody: OTMDictionary? = nil, completionHandler: @escaping( _ result: Any?, _ error: NSError?) -> Void) {
         
         let request = NSMutableURLRequest(url: URLFromParameters(parameters, withPathExtension: method))
         request.httpMethod = verb.method()
@@ -39,6 +39,8 @@ class UdacityHandler {
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
+            Util.showActivityIndicatory(in: viewController)
+            
             func sendError(_ error: String) {
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey : error]
@@ -61,6 +63,8 @@ class UdacityHandler {
             }
             
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
+            
+            Util.hideActivityIndicator()
         }
         
         task.resume()
