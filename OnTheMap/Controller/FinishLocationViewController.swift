@@ -19,12 +19,6 @@ class FinishLocationViewController: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
         performUIUpdatesOnMain {
             self.mapView.addAnnotations(Util.createAnnotations(with: [self.studentLocation]))
         }
@@ -46,7 +40,7 @@ extension FinishLocationViewController: MKMapViewDelegate {
             pinView?.canShowCallout = true
             pinView?.pinTintColor = .red
             pinView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        } else {
+        }else {
             pinView?.annotation = annotation
         }
         
@@ -57,5 +51,20 @@ extension FinishLocationViewController: MKMapViewDelegate {
         if let toOpen = view.annotation?.subtitle, control == view.rightCalloutAccessoryView {
             Util.openURL(with: toOpen ?? "")
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // get the particular pin that was tapped
+        let pinToZoomOn = view.annotation
+        
+        // optionally you can set your own boundaries of the zoom
+        let span = MKCoordinateSpanMake(0.5, 0.5)
+        
+        // or use the current map zoom and just center the map
+        // let span = mapView.region.span
+        
+        // now move the map
+        let region = MKCoordinateRegion(center: pinToZoomOn!.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
     }
 }
