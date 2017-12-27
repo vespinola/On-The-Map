@@ -16,6 +16,8 @@ class UdacityHandler {
     
     func request(verb: HTTPMethod = .post, method: String, in viewController: UIViewController, parameters: OTMDictionary? = nil, jsonBody: OTMDictionary? = nil, completionHandler: @escaping( _ result: Any?, _ error: NSError?) -> Void) {
         
+        let customViewController = viewController as? CustomViewController
+        
         let request = NSMutableURLRequest(url: URLFromParameters(parameters, withPathExtension: method))
         request.httpMethod = verb.method()
         
@@ -36,10 +38,9 @@ class UdacityHandler {
             }
         }
         
+        customViewController?.showActivityIndicatory()
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
-            
-            Util.showActivityIndicatory(in: viewController)
             
             func sendError(_ error: String) {
                 print(error)
@@ -64,7 +65,7 @@ class UdacityHandler {
             
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
             
-            Util.hideActivityIndicator()
+            customViewController?.hideActivityIndicator()
         }
         
         task.resume()

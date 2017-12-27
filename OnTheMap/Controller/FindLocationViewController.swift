@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FindLocationViewController: UIViewController {
+class FindLocationViewController: CustomViewController {
     @IBOutlet weak var locationImageView: UIImageView!
     @IBOutlet weak var locationTextField: CustomTextField!
     @IBOutlet weak var infoTextField: CustomTextField!

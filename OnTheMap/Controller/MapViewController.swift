@@ -9,23 +9,15 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: CustomViewController {
     
     @IBOutlet weak var mapView: MKMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
         if ParseHandler.sharedInstance().studentsLocation.isEmpty {
-            ParseHandler.sharedInstance().getStudentLocation(in: self) { students in
-                ParseHandler.sharedInstance().studentsLocation = students
-                self.performStudentLocation(students)
-            }
+            refrestStudentsLocation()
         } else {
             performStudentLocation(ParseHandler.sharedInstance().studentsLocation)
         }
@@ -33,13 +25,11 @@ class MapViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
-    func performStudentLocation(_ students: [StudentLocation]) {
-        
-        performUIUpdatesOnMain {
-            self.mapView.addAnnotations(Util.createAnnotations(with: students))
-        }
-        
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//
+//    }
     
     @IBAction func logoutButtonOnTap(_ sender: Any) {
         Util.performLogout(in: self) {
@@ -53,12 +43,24 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func refreshButtonOnTap(_ sender: Any) {
+        refrestStudentsLocation()
+    }
+    
+    func refrestStudentsLocation() {
         ParseHandler.sharedInstance().getStudentLocation(in: self) { students in
             performUIUpdatesOnMain {
                 ParseHandler.sharedInstance().studentsLocation = students
                 self.performStudentLocation(students)
             }
         }
+    }
+    
+    func performStudentLocation(_ students: [StudentLocation]) {
+        
+        performUIUpdatesOnMain {
+            self.mapView.addAnnotations(Util.createAnnotations(with: students))
+        }
+        
     }
 }
 

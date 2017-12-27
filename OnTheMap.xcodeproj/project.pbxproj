@@ -27,6 +27,7 @@
 		CE87E32D1FEF31FA00E9321C /* UdacityPostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E32C1FEF31FA00E9321C /* UdacityPostSession.swift */; };
 		CE9A81151FEE98F800B12203 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A81141FEE98F800B12203 /* StudentLocation.swift */; };
 		CE9A81171FEEABD800B12203 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A81161FEEABD800B12203 /* ParseConvenience.swift */; };
+		CEE176BD1FF322AB0044ADDC /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE176BC1FF322AB0044ADDC /* CustomViewController.swift */; };
 		CEF608DA1FE9F8AD00076339 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608D91FE9F8AD00076339 /* Util.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		CE87E32C1FEF31FA00E9321C /* UdacityPostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityPostSession.swift; sourceTree = "<group>"; };
 		CE9A81141FEE98F800B12203 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		CE9A81161FEEABD800B12203 /* ParseConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
+		CEE176BC1FF322AB0044ADDC /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		CEF608D91FE9F8AD00076339 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				C3B393C21FE86F9200DB1F52 /* Assets.xcassets */,
 				C3B393C41FE86F9200DB1F52 /* LaunchScreen.storyboard */,
 				CEF608D91FE9F8AD00076339 /* Util.swift */,
+				CEE176BC1FF322AB0044ADDC /* CustomViewController.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -140,9 +143,9 @@
 		CE9A81131FEE93D500B12203 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				CE87E3241FEEFFA500E9321C /* ParseHandler.swift */,
 				CE9A81141FEE98F800B12203 /* StudentLocation.swift */,
 				CE9A81161FEEABD800B12203 /* ParseConvenience.swift */,
-				CE87E3241FEEFFA500E9321C /* ParseHandler.swift */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				CE9A81171FEEABD800B12203 /* ParseConvenience.swift in Sources */,
 				CE76F0CE1FEDFC240067FDFC /* CustomButton.swift in Sources */,
 				C3B9C71A1FE98AB0003F5377 /* Constants.swift in Sources */,
+				CEE176BD1FF322AB0044ADDC /* CustomViewController.swift in Sources */,
 				CE87E3291FEF2ACF00E9321C /* UdacityHandler.swift in Sources */,
 				C3B9C71D1FE9C02E003F5377 /* CustomTextField.swift in Sources */,
 				CE17B4141FF012F400F51DCC /* AddLocationViewController.swift in Sources */,

@@ -16,7 +16,7 @@ protocol AddLocationProtocol {
 
 //from https://www.efectoapple.com/implementando-container-view-controller/
 
-class AddLocationViewController: UIViewController {
+class AddLocationViewController: CustomViewController {
     @IBOutlet weak var firstContainer: UIView!
     
     private var activeViewController: UIViewController? {

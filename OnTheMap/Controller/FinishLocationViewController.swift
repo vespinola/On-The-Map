@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class FinishLocationViewController: UIViewController {
+class FinishLocationViewController: CustomViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     var delegate: AddLocationProtocol!

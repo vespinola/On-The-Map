@@ -38,7 +38,6 @@ func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
 }
 
 class Util {
-    static var actInd: UIActivityIndicatorView?
     
     class func showAlert(for message: String, in viewController: UIViewController) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
@@ -105,30 +104,6 @@ class Util {
         }
         
         return annotations
-    }
-    
-    class func showActivityIndicatory(in viewController: UIViewController?) {
-        guard let viewController = viewController else { return }
-        let uiView = viewController.view
-        
-        performUIUpdatesOnMain {
-            actInd = UIActivityIndicatorView()
-            
-            actInd?.frame = CGRect(x: 0, y: 0, width: 40, height: 40);
-            actInd?.center = uiView!.center
-            actInd?.hidesWhenStopped = true
-            actInd?.activityIndicatorViewStyle = .whiteLarge
-            uiView!.addSubview(actInd!)
-            actInd?.startAnimating()
-        }
-        
-    }
-    
-    class func hideActivityIndicator() {
-        performUIUpdatesOnMain {
-            actInd?.stopAnimating()
-        }
-        
     }
 }
 

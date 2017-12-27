@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: CustomViewController {
     @IBOutlet weak var listTableView: UITableView!
 
     var students: [StudentLocation] = []

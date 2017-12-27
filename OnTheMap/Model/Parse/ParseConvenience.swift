@@ -14,7 +14,7 @@ extension ParseHandler {
             "limit" : 100
         ]
         
-        ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, parameters: parameters, completionHandler: { data, error in
+        ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, in: viewController, parameters: parameters, completionHandler: { data, error in
             guard error == nil else {
                 Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
                 return
@@ -37,7 +37,7 @@ extension ParseHandler {
             "limit" : 1
         ]
         
-        ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, parameters: parameters, completionHandler: { data, error in
+        ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, in: viewController, parameters: parameters, completionHandler: { data, error in
             guard error == nil else {
                 Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
                 return
@@ -53,7 +53,6 @@ extension ParseHandler {
     
     func updateLoggedUserLocation(for studentLocation: StudentLocation, in viewController: UIViewController, onCompletion: @escaping (StudentLocation) -> Void) {
         
-        
         let parameters: OTMDictionary = [
             "uniqueKey" : studentLocation.uniqueKey!,
             "firstName" : studentLocation.firstName!,
@@ -64,7 +63,7 @@ extension ParseHandler {
             "longitude" : studentLocation.longitude!,
         ]
         
-        ParseHandler.sharedInstance().request(verb: .put, method: ParseHandler.Methods.StudentLocation + "/\(studentLocation.objectId!)", jsonBody: parameters, completionHandler: { data, error in
+        ParseHandler.sharedInstance().request(verb: .put, method: ParseHandler.Methods.StudentLocation + "/\(studentLocation.objectId!)", in: viewController, jsonBody: parameters, completionHandler: { data, error in
             guard error == nil else {
                 Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
                 return
