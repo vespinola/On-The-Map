@@ -12,24 +12,25 @@ import MapKit
 class MapViewController: CustomViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    var annotations: [MKPointAnnotation] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if ParseHandler.sharedInstance().studentsLocation.isEmpty {
-            refrestStudentsLocation()
-        } else {
-            performStudentLocation(ParseHandler.sharedInstance().studentsLocation)
-        }
-        
         tabBarController?.tabBar.isHidden = false
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if ParseHandler.sharedInstance().studentsLocation.isEmpty {
+            refrestStudentsLocation()
+        } else {
+            performStudentLocation(annotations)
+        }
+
+    }
     
     @IBAction func logoutButtonOnTap(_ sender: Any) {
         Util.performLogout(in: self) {
@@ -47,18 +48,22 @@ class MapViewController: CustomViewController {
     }
     
     func refrestStudentsLocation() {
+        
+        mapView.removeAnnotations(annotations)
+        
         ParseHandler.sharedInstance().getStudentLocation(in: self) { students in
             performUIUpdatesOnMain {
                 ParseHandler.sharedInstance().studentsLocation = students
-                self.performStudentLocation(students)
+                self.annotations = Util.createAnnotations(with: students)
+                self.performStudentLocation(self.annotations)
             }
         }
     }
     
-    func performStudentLocation(_ students: [StudentLocation]) {
+    func performStudentLocation(_ students: [MKPointAnnotation]) {
         
         performUIUpdatesOnMain {
-            self.mapView.addAnnotations(Util.createAnnotations(with: students))
+            self.mapView.addAnnotations(students)
         }
         
     }
