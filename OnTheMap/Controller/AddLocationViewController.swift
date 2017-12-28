@@ -118,7 +118,6 @@ extension AddLocationViewController: AddLocationProtocol {
                         performFinishLocationViewController(studentLocation)
                     })
                 }
-                
             })
             
         })
