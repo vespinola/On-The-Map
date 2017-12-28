@@ -11,7 +11,7 @@ import UIKit
 class ListViewController: CustomViewController {
     @IBOutlet weak var listTableView: UITableView!
 
-    var students: [StudentLocation] = []
+    var students: [StudentInformation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

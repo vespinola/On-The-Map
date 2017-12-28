@@ -9,7 +9,7 @@
 import UIKit
 
 extension ParseHandler {
-    func getStudentLocation(in viewController: UIViewController, onCompletion: @escaping ([StudentLocation]) -> Void) {
+    func getStudentLocation(in viewController: UIViewController, onCompletion: @escaping ([StudentInformation]) -> Void) {
         let parameters: OTMDictionary = [
             "limit" : 100
         ]
@@ -22,7 +22,7 @@ extension ParseHandler {
             
             guard let array = data as? OTMDictionary else { return }
             
-            let students = StudentLocation.studentLocationsFromResults(array["results"] as! [OTMDictionary])
+            let students = StudentInformation.studentLocationsFromResults(array["results"] as! [OTMDictionary])
             
             ParseHandler.sharedInstance().studentsLocation = students
             
@@ -30,7 +30,7 @@ extension ParseHandler {
         })
     }
     
-    func getLoggedUserLocation(in viewController: UIViewController, onCompletion: @escaping (StudentLocation?) -> Void) {
+    func getLoggedUserLocation(in viewController: UIViewController, onCompletion: @escaping (StudentInformation?) -> Void) {
         
         let parameters: OTMDictionary = [
             "where" : "{\"uniqueKey\":\"\(UdacityHandler.sharedInstance().udacityUserData["key"]!)\"}",
@@ -45,13 +45,13 @@ extension ParseHandler {
             
             guard let array = data as? OTMDictionary else { return }
             
-            let students = StudentLocation.studentLocationsFromResults(array["results"] as! [OTMDictionary])
+            let students = StudentInformation.studentLocationsFromResults(array["results"] as! [OTMDictionary])
             
             onCompletion(students.first)
         })
     }
     
-    func updateLoggedUserLocation(for studentLocation: StudentLocation, in viewController: UIViewController, onCompletion: @escaping (StudentLocation) -> Void) {
+    func updateLoggedUserLocation(for studentLocation: StudentInformation, in viewController: UIViewController, onCompletion: @escaping (StudentInformation) -> Void) {
         
         let parameters: OTMDictionary = [
             "uniqueKey" : studentLocation.uniqueKey!,
@@ -79,7 +79,7 @@ extension ParseHandler {
         })
     }
     
-    func postStudentLocation(with parameters: OTMDictionary, in viewController: UIViewController, onCompletion: @escaping (StudentLocation) -> Void) {
+    func postStudentLocation(with parameters: OTMDictionary, in viewController: UIViewController, onCompletion: @escaping (StudentInformation) -> Void) {
         
         ParseHandler.sharedInstance().request(verb: .post, method: ParseHandler.Methods.StudentLocation, jsonBody: parameters, completionHandler: { data, error in
             guard error == nil else {
@@ -89,7 +89,7 @@ extension ParseHandler {
             
             guard let createData = data as? OTMDictionary else { return }
             
-            var newStudentLocation = StudentLocation(dictionary: parameters)
+            var newStudentLocation = StudentInformation(dictionary: parameters)
             
             newStudentLocation.createdAt = createData["createdAt"] as? String
             newStudentLocation.objectId = createData["objectId"] as? String

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct StudentLocation {
+struct StudentInformation {
     var objectId: String?
     let uniqueKey: String?
     let firstName: String?
@@ -33,13 +33,13 @@ struct StudentLocation {
         updatedAt = dictionary["updatedAt"] as? String
     }
     
-    static func studentLocationsFromResults(_ results: [OTMDictionary]) -> [StudentLocation] {
+    static func studentLocationsFromResults(_ results: [OTMDictionary]) -> [StudentInformation] {
         
-        var students = [StudentLocation]()
+        var students = [StudentInformation]()
         
         // iterate through array of dictionaries, each Movie is a dictionary
         for result in results {
-            students.append(StudentLocation(dictionary: result))
+            students.append(StudentInformation(dictionary: result))
         }
         
         return students
@@ -49,8 +49,8 @@ struct StudentLocation {
 
 // MARK: - TMDBMovie: Equatable
 
-extension StudentLocation: Equatable {}
+extension StudentInformation: Equatable {}
 
-func ==(lhs: StudentLocation, rhs: StudentLocation) -> Bool {
+func ==(lhs: StudentInformation, rhs: StudentInformation) -> Bool {
     return lhs.objectId == rhs.objectId
 }

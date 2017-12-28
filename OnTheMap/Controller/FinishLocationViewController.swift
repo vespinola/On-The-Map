@@ -14,7 +14,7 @@ class FinishLocationViewController: CustomViewController {
     
     var delegate: AddLocationProtocol!
     
-    var studentLocation: StudentLocation!
+    var studentLocation: StudentInformation!
     
     var annotations: [MKPointAnnotation] = []
     

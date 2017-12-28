@@ -70,7 +70,7 @@ class AddLocationViewController: CustomViewController {
 extension AddLocationViewController: AddLocationProtocol {
     func findLocation(with stringQuery: String, and link: String) {
         
-        let performFinishLocationViewController: (StudentLocation) -> Void = { studentLocation in
+        let performFinishLocationViewController: (StudentInformation) -> Void = { studentLocation in
             performUIUpdatesOnMain {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let finishLocationViewController = storyboard.instantiateViewController(withIdentifier: "FinishLocationViewControllerID") as? FinishLocationViewController

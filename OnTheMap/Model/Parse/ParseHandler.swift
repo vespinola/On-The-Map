@@ -10,7 +10,7 @@ import UIKit
 
 class ParseHandler: NSObject {
     // shared session
-    var studentsLocation: [StudentLocation] = []
+    var studentsLocation: [StudentInformation] = []
     
     var session = URLSession.shared
     

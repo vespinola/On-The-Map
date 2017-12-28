@@ -78,7 +78,7 @@ class Util {
         }
     }
     
-    class func createAnnotations(with studentsLocation: [StudentLocation]) -> [MKPointAnnotation]{
+    class func createAnnotations(with studentsLocation: [StudentInformation]) -> [MKPointAnnotation]{
         var annotations:[MKPointAnnotation] = []
         
         studentsLocation.forEach { student in
