@@ -12,6 +12,8 @@ class Constants: NSObject {
     
     struct Segues {
         static let home = "homeSegue"
+        static let addLocationFromMap = "addLocationStep1FromFirstTab"
+        static let addLocationFromList = "addLocationStep1FromSecondTab"
     }
     
     struct Metrics {

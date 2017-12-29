@@ -33,14 +33,11 @@ class MapViewController: CustomViewController {
     }
     
     @IBAction func logoutButtonOnTap(_ sender: Any) {
-        Util.performLogout(in: self) {
-            ParseHandler.sharedInstance().clearCache()
-            UdacityHandler.sharedInstance().clearCache()
-        }
+        Util.performLogout(in: self)
     }
     
     @IBAction func addLocationOnTap(_ sender: Any) {
-        performSegue(withIdentifier: "addLocationStep1FromFirstTab", sender: nil)
+        performSegue(withIdentifier: Constants.Segues.addLocationFromMap, sender: nil)
     }
     
     @IBAction func refreshButtonOnTap(_ sender: Any) {

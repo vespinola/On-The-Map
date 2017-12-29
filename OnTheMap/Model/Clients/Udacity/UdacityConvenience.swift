@@ -23,9 +23,13 @@ extension UdacityHandler {
             
             guard let dictionary = data as? OTMDictionary else { return }
             
-            let session = UdacityPostSession(dictionary: dictionary)
+            if let error = dictionary["error"] as? String {
+                Util.showAlert(for: error, in: viewController)
+            } else {
+                let session = UdacityPostSession(dictionary: dictionary)
+                onCompletion(session)
+            }
             
-            onCompletion(session)
         })
     }
     

@@ -20,14 +20,11 @@ class ListViewController: CustomViewController {
     }
     
     @IBAction func logoutButtonOnTap(_ sender: Any) {
-        Util.performLogout(in: self, with: {
-            ParseHandler.sharedInstance().clearCache()
-            UdacityHandler.sharedInstance().clearCache()
-        })
+        Util.performLogout(in: self)
     }
     
     @IBAction func addLocatonButtonOnTap(_ sender: Any) {
-        performSegue(withIdentifier: "addLocationStep1FromSecondTab", sender: nil)
+        performSegue(withIdentifier: Constants.Segues.addLocationFromList, sender: nil)
     }
     
     @IBAction func refreshButtonOnTap(_ sender: Any) {
