@@ -88,13 +88,13 @@
 		C3B393BA1FE86F9200DB1F52 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				CEF608D71FE9F87800076339 /* Controller */,
 				CE9A81101FEE909300B12203 /* Model */,
+				CE9A810F1FEE907A00B12203 /* View */,
 				C3B393BB1FE86F9200DB1F52 /* AppDelegate.swift */,
 				C3B9C7191FE98AB0003F5377 /* Constants.swift */,
 				C3B393BF1FE86F9200DB1F52 /* Main.storyboard */,
 				C3B393C71FE86F9200DB1F52 /* Info.plist */,
-				CE9A810F1FEE907A00B12203 /* View */,
-				CEF608D71FE9F87800076339 /* Controller */,
 				C3B9C71B1FE9BFE3003F5377 /* Supporting Files */,
 			);
 			path = OnTheMap;

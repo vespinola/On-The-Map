@@ -82,10 +82,16 @@ extension AddLocationViewController: AddLocationProtocol {
         }
         
         
-        searchLocation(with: stringQuery, onCompletion: { mapItem in
+        
             
-            ParseHandler.sharedInstance().getLoggedUserLocation(in: self, onCompletion: { studentLocation in
+        ParseHandler.sharedInstance().getLoggedUserLocation(in: self, onCompletion: { studentLocation in
+            
+            self.showActivityIndicatory()
+            
+            self.searchLocation(with: stringQuery, onCompletion: { mapItem in
                 
+                self.hideActivityIndicator()
+            
                 if let studentLocation = studentLocation {
                     
                     var updateStudentLocation = studentLocation
