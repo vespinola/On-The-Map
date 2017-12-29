@@ -18,10 +18,14 @@ class FindLocationViewController: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
-        
     }
     
     @IBAction func findLocationOnTap(_ sender: Any) {
+        
+        [locationTextField, infoTextField].forEach {
+            $0?.resignFirstResponder()
+        }
+        
         guard let location = locationTextField.text, !location.isEmpty else {
             Util.showAlert(for: "You must enter a location", in: self)
             return

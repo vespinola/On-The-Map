@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ParseHandler: NSObject {
+class ParseHandler: HTTPHandler {
     // shared session
     var studentsLocation: [StudentInformation] = []
     
@@ -36,29 +36,9 @@ class ParseHandler: NSObject {
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
-            func sendError(_ error: String) {
-                customViewController?.hideActivityIndicator()
-                
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandler(nil, NSError(domain: "taskForMethod", code: 1, userInfo: userInfo))
-            }
+            self.verifyResponse(with: data, error: error, and: response, completionHandler: completionHandler)
             
-            guard (error == nil) else {
-                sendError("There was an error with your request: \(error!)")
-                return
-            }
-            
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
-                return
-            }
-            
-            guard let data = data else {
-                sendError("No data was returned by the request!")
-                return
-            }
-            
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
+            self.convertDataWithCompletionHandler(data!, completionHandlerForConvertData: completionHandler)
             
             customViewController?.hideActivityIndicator()
             

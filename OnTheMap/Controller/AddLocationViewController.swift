@@ -68,6 +68,8 @@ class AddLocationViewController: CustomViewController {
 }
 
 extension AddLocationViewController: AddLocationProtocol {
+    
+    //used on FindViewController
     func findLocation(with stringQuery: String, and link: String) {
         
         let performFinishLocationViewController: (StudentInformation) -> Void = { studentLocation in
@@ -82,8 +84,6 @@ extension AddLocationViewController: AddLocationProtocol {
         }
         
         
-        
-            
         ParseHandler.sharedInstance().getLoggedUserLocation(in: self, onCompletion: { studentLocation in
             
             self.showActivityIndicatory()
@@ -130,6 +130,7 @@ extension AddLocationViewController: AddLocationProtocol {
         
     }
     
+    //used on FinishViewController
     func finish() {
         dismiss(animated: true, completion: nil)
     }
@@ -141,11 +142,11 @@ extension AddLocationViewController {
     func searchLocation(with string: String, onCompletion: @escaping (MKMapItem) -> Void) {
         let searchReq = MKLocalSearchRequest()
         searchReq.naturalLanguageQuery = string
-//        searchReq.region = mapView.region
         
         let search = MKLocalSearch(request: searchReq)
         search.start(completionHandler: { response, error in
             guard let searchResponse = response, let firstPlace = searchResponse.mapItems.first, error == nil else {
+                Util.showAlert(for: "Cannot get a location for \(string)", in: self)
                 return
             }
             

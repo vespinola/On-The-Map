@@ -16,6 +16,7 @@ class LoginViewController: CustomViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     
+    let udacitySignupString = "https://www.udacity.com/account/auth#!/signup"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,6 @@ class LoginViewController: CustomViewController {
     }
     
     @IBAction func registerButtonOnTap(_ sender: Any) {
-        Util.openURL(with: "https://www.udacity.com/account/auth#!/signup")
+        Util.openURL(with: udacitySignupString)
     }
 }

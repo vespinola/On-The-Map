@@ -37,7 +37,6 @@ struct StudentInformation {
         
         var students = [StudentInformation]()
         
-        // iterate through array of dictionaries, each Movie is a dictionary
         for result in results {
             students.append(StudentInformation(dictionary: result))
         }
