@@ -11,7 +11,11 @@ import MapKit
 
 protocol AddLocationProtocol {
     func findLocation(with query: String, and link: String)
-    func finish()
+    func finish(for studentInformation: StudentInformation, action: AddLocationAction)
+}
+
+enum AddLocationAction {
+    case create, update
 }
 
 //from https://www.efectoapple.com/implementando-container-view-controller/
@@ -72,40 +76,33 @@ extension AddLocationViewController: AddLocationProtocol {
     //used on FindViewController
     func findLocation(with stringQuery: String, and link: String) {
         
-        let performFinishLocationViewController: (StudentInformation) -> Void = { studentLocation in
+        let performFinishLocationViewController: (StudentInformation, AddLocationAction) -> Void = { studentLocation, action in
             performUIUpdatesOnMain {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let finishLocationViewController = storyboard.instantiateViewController(withIdentifier: "FinishLocationViewControllerID") as? FinishLocationViewController
                 finishLocationViewController?.delegate = self
                 finishLocationViewController?.studentLocation = studentLocation
+                finishLocationViewController?.addLocationAction = action
                 
                 self.activeViewController = finishLocationViewController
             }
         }
         
+        self.showActivityIndicatory()
         
-        ParseHandler.sharedInstance().getLoggedUserLocation(in: self, onCompletion: { studentLocation in
-            
-            self.showActivityIndicatory()
-            
-            self.searchLocation(with: stringQuery, onCompletion: { mapItem in
-                
-                self.hideActivityIndicator()
-            
-                if let studentLocation = studentLocation {
-                    
-                    var updateStudentLocation = studentLocation
+        self.searchLocation(with: stringQuery, onCompletion: { mapItem in
+            self.hideActivityIndicator()
+        
+            ParseHandler.sharedInstance().getLoggedUserLocation(in: self, onCompletion: { studentLocation in
+                if var updateStudentLocation = studentLocation {
                     
                     updateStudentLocation.mapString = stringQuery
                     updateStudentLocation.mediaURL = link
                     updateStudentLocation.latitude = mapItem.placemark.coordinate.latitude
                     updateStudentLocation.longitude = mapItem.placemark.coordinate.longitude
                     
-                    
-                    ParseHandler.sharedInstance().updateLoggedUserLocation(for: updateStudentLocation, in: self, onCompletion: { updatedStudentLocation in
-                        performFinishLocationViewController(updatedStudentLocation)
-                    })
-                    
+                    performFinishLocationViewController(updateStudentLocation, .update)
+
                 } else {
                     
                     let userData = UdacityHandler.sharedInstance().udacityUserData!
@@ -120,19 +117,27 @@ extension AddLocationViewController: AddLocationProtocol {
                         "longitude" : mapItem.placemark.coordinate.longitude
                     ]
                     
-                    ParseHandler.sharedInstance().postStudentLocation(with: studentData, in: self, onCompletion: { studentLocation in
-                        performFinishLocationViewController(studentLocation)
-                    })
+                    let newStudentLocaiton = StudentInformation(dictionary: studentData)
+                    
+                    performFinishLocationViewController(newStudentLocaiton, .create)
+                    
                 }
             })
-            
         })
-        
     }
     
     //used on FinishViewController
-    func finish() {
-        dismiss(animated: true, completion: nil)
+    func finish(for studentInformation: StudentInformation, action: AddLocationAction) {
+        switch action {
+        case .create:
+            ParseHandler.sharedInstance().postStudentLocation(with: studentInformation, in: self, onCompletion: { studentLocation in
+                self.dismiss(animated: true, completion: nil)
+            })
+        case .update:
+            ParseHandler.sharedInstance().updateLoggedUserLocation(for: studentInformation, in: self, onCompletion: { updatedStudentLocation in
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
     }
 }
 

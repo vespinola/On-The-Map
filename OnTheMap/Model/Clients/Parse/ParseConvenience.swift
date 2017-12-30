@@ -86,6 +86,8 @@ extension ParseHandler {
             
             guard let updateData = data as? OTMDictionary else { return }
             
+            print(updateData)
+            
             var updatedStudentLocation = studentLocation
             
             updatedStudentLocation.updatedAt = updateData["updatedAt"] as? String
@@ -94,7 +96,18 @@ extension ParseHandler {
         })
     }
     
-    func postStudentLocation(with parameters: OTMDictionary, in viewController: CustomViewController, onCompletion: @escaping (StudentInformation) -> Void) {
+    func postStudentLocation(with studentInformation: StudentInformation, in viewController: CustomViewController, onCompletion: @escaping (StudentInformation) -> Void) {
+        
+        
+        let parameters: OTMDictionary = [
+            "uniqueKey" : studentInformation.uniqueKey!,
+            "firstName" : studentInformation.firstName!,
+            "lastName" : studentInformation.lastName!,
+            "mapString" : studentInformation.mapString!,
+            "mediaURL" : studentInformation.mediaURL!,
+            "latitude" : studentInformation.latitude!,
+            "longitude" : studentInformation.longitude!,
+        ]
         
         viewController.showActivityIndicatory()
         
@@ -108,6 +121,8 @@ extension ParseHandler {
             }
             
             guard let createData = data as? OTMDictionary else { return }
+            
+            print(createData)
             
             var newStudentLocation = StudentInformation(dictionary: parameters)
             

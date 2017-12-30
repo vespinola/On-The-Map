@@ -11,10 +11,10 @@ import MapKit
 
 class FinishLocationViewController: CustomViewController {
     @IBOutlet weak var mapView: MKMapView!
-    
     var delegate: AddLocationProtocol!
     
     var studentLocation: StudentInformation!
+    var addLocationAction: AddLocationAction = .create
     
     var annotations: [MKPointAnnotation] = []
     
@@ -38,7 +38,7 @@ class FinishLocationViewController: CustomViewController {
     }
     
     @IBAction func finishButtonOnTap(_ sender: Any) {
-        delegate.finish()
+        delegate.finish(for: studentLocation, action: addLocationAction)
     }
 }
 
