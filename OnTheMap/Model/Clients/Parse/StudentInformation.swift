@@ -9,6 +9,8 @@
 import UIKit
 
 struct StudentInformation {
+    
+    static var students: [StudentInformation] = []
   
     var objectId: String?
     let uniqueKey: String?

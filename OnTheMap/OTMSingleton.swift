@@ -9,10 +9,8 @@
 import UIKit
 
 class OTMSingleton {
-    
     var session: UdacityPostSession!
     var userData: OTMDictionary!
-    var studentsInformation: [StudentInformation] = []
     
     class func shared() -> OTMSingleton {
         struct Singleton {
@@ -24,6 +22,5 @@ class OTMSingleton {
     func clear() {
         session = nil
         userData = nil
-        studentsInformation.removeAll()
     }
 }

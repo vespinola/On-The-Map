@@ -58,6 +58,7 @@ class Util {
                 let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewControllerID") as! LoginViewController
                 
                 OTMSingleton.shared().clear()
+                StudentInformation.students.removeAll()
                 
                 UIView.transition(with: viewController.view, duration: 0.5, options: .transitionFlipFromLeft, animations: {
                     appdelegate.window!.rootViewController = homeViewController

@@ -26,7 +26,7 @@
 		CE87E3291FEF2ACF00E9321C /* UdacityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E3281FEF2ACF00E9321C /* UdacityHandler.swift */; };
 		CE87E32B1FEF30E500E9321C /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E32A1FEF30E500E9321C /* UdacityConvenience.swift */; };
 		CE87E32D1FEF31FA00E9321C /* UdacityPostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E32C1FEF31FA00E9321C /* UdacityPostSession.swift */; };
-		CE9A81151FEE98F800B12203 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A81141FEE98F800B12203 /* StudentLocation.swift */; };
+		CE9A81151FEE98F800B12203 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A81141FEE98F800B12203 /* StudentInformation.swift */; };
 		CE9A81171FEEABD800B12203 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A81161FEEABD800B12203 /* ParseConvenience.swift */; };
 		CEE176BD1FF322AB0044ADDC /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE176BC1FF322AB0044ADDC /* CustomViewController.swift */; };
 		CEF608DA1FE9F8AD00076339 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF608D91FE9F8AD00076339 /* Util.swift */; };
@@ -54,7 +54,7 @@
 		CE87E3281FEF2ACF00E9321C /* UdacityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityHandler.swift; sourceTree = "<group>"; };
 		CE87E32A1FEF30E500E9321C /* UdacityConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		CE87E32C1FEF31FA00E9321C /* UdacityPostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityPostSession.swift; sourceTree = "<group>"; };
-		CE9A81141FEE98F800B12203 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
+		CE9A81141FEE98F800B12203 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		CE9A81161FEEABD800B12203 /* ParseConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
 		CEE176BC1FF322AB0044ADDC /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		CEF608D91FE9F8AD00076339 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				CE87E3241FEEFFA500E9321C /* ParseHandler.swift */,
-				CE9A81141FEE98F800B12203 /* StudentLocation.swift */,
+				CE9A81141FEE98F800B12203 /* StudentInformation.swift */,
 				CE9A81161FEEABD800B12203 /* ParseConvenience.swift */,
 			);
 			path = Parse;
@@ -246,7 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE9A81151FEE98F800B12203 /* StudentLocation.swift in Sources */,
+				CE9A81151FEE98F800B12203 /* StudentInformation.swift in Sources */,
 				C3B9C7181FE98639003F5377 /* LoginViewController.swift in Sources */,
 				CE87E3271FEF1EB600E9321C /* ListViewController.swift in Sources */,
 				C3B393BE1FE86F9200DB1F52 /* MapViewController.swift in Sources */,

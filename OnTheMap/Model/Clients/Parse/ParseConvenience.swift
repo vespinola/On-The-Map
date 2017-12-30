@@ -30,7 +30,7 @@ extension ParseHandler {
             
             let students = StudentInformation.studentLocationsFromResults(array["results"] as! [OTMDictionary])
             
-            OTMSingleton.shared().studentsInformation = students
+            StudentInformation.students = students
             
             onCompletion(students)
         })
