@@ -16,7 +16,7 @@ extension ParseHandler {
         
         ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, in: viewController, parameters: parameters, completionHandler: { data, error in
             guard error == nil else {
-                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
             }
             
@@ -24,7 +24,7 @@ extension ParseHandler {
             
             let students = StudentInformation.studentLocationsFromResults(array["results"] as! [OTMDictionary])
             
-            ParseHandler.sharedInstance().studentsLocation = students
+            StudentInformation.studentsLocation = students
             
             onCompletion(students)
         })
@@ -39,7 +39,7 @@ extension ParseHandler {
         
         ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, in: viewController, parameters: parameters, completionHandler: { data, error in
             guard error == nil else {
-                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
             }
             
@@ -65,7 +65,7 @@ extension ParseHandler {
         
         ParseHandler.sharedInstance().request(verb: .put, method: ParseHandler.Methods.StudentLocation + "/\(studentLocation.objectId!)", in: viewController, jsonBody: parameters, completionHandler: { data, error in
             guard error == nil else {
-                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
             }
             
@@ -83,7 +83,7 @@ extension ParseHandler {
         
         ParseHandler.sharedInstance().request(verb: .post, method: ParseHandler.Methods.StudentLocation, jsonBody: parameters, completionHandler: { data, error in
             guard error == nil else {
-                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
             }
             

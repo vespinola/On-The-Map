@@ -24,7 +24,7 @@ class MapViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if ParseHandler.sharedInstance().studentsLocation.isEmpty {
+        if StudentInformation.studentsLocation.isEmpty {
             refrestStudentsLocation()
         } else {
             performStudentLocation(annotations)
@@ -50,7 +50,7 @@ class MapViewController: CustomViewController {
         
         ParseHandler.sharedInstance().getStudentLocation(in: self) { students in
             performUIUpdatesOnMain {
-                ParseHandler.sharedInstance().studentsLocation = students
+                StudentInformation.studentsLocation = students
                 self.annotations = Util.createAnnotations(with: students)
                 self.performStudentLocation(self.annotations)
             }

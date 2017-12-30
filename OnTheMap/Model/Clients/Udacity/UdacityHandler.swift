@@ -43,13 +43,14 @@ class UdacityHandler {
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
             func sendError(_ error: String) {
-                print(error)
+                customViewController?.hideActivityIndicator()
+                
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 completionHandler(nil, NSError(domain: "taskForMethod", code: 1, userInfo: userInfo))
             }
             
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error!)")
+                sendError("There was an error with your request: \(error!.localizedDescription)")
                 return
             }
             

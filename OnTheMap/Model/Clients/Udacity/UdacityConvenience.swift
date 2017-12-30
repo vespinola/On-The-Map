@@ -17,7 +17,7 @@ extension UdacityHandler {
         
         UdacityHandler.sharedInstance().request(method: UdacityHandler.Methods.Session, in: viewController, jsonBody: parametersWrapper, completionHandler: { data, error in
             guard error == nil else {
-                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
             }
             
@@ -37,7 +37,7 @@ extension UdacityHandler {
         
         UdacityHandler.sharedInstance().request(verb: .delete, method: UdacityHandler.Methods.Session, in: viewController, completionHandler: { data, error in
             guard error == nil else {
-                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
             }
             
@@ -54,7 +54,7 @@ extension UdacityHandler {
         
         UdacityHandler.sharedInstance().request(verb: .get, method: UdacityHandler.Methods.Users + "/\(sessionKey)", in: viewController, completionHandler: { data, error in
             guard error == nil else {
-                Util.showAlert(for: (error?.description ?? "empty error"), in: viewController)
+                Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
             }
             

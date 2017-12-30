@@ -10,7 +10,6 @@ import UIKit
 
 class ParseHandler: NSObject {
     // shared session
-    var studentsLocation: [StudentInformation] = []
     
     var session = URLSession.shared
     
@@ -44,7 +43,7 @@ class ParseHandler: NSObject {
             }
             
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error!)")
+                sendError("There was an error with your request: \(error!.localizedDescription)")
                 return
             }
             
@@ -63,7 +62,7 @@ class ParseHandler: NSObject {
     }
     
     func clearCache() {
-        studentsLocation = []
+        StudentInformation.studentsLocation = []
     }
     
     class func sharedInstance() -> ParseHandler {

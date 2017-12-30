@@ -16,7 +16,7 @@ class ListViewController: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        students = ParseHandler.sharedInstance().studentsLocation
+        students = StudentInformation.studentsLocation
     }
     
     @IBAction func logoutButtonOnTap(_ sender: Any) {
@@ -30,7 +30,7 @@ class ListViewController: CustomViewController {
     @IBAction func refreshButtonOnTap(_ sender: Any) {
         ParseHandler.sharedInstance().getStudentLocation(in: self) { students in
             performUIUpdatesOnMain {
-                ParseHandler.sharedInstance().studentsLocation = students
+                StudentInformation.studentsLocation = students
                 self.students = students
                 self.listTableView.reloadData()
             }
