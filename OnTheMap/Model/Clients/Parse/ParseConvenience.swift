@@ -11,7 +11,8 @@ import UIKit
 extension ParseHandler {
     func getStudentLocation(in viewController: CustomViewController, onCompletion: @escaping ([StudentInformation]) -> Void) {
         let parameters: OTMDictionary = [
-            "limit" : 100
+            "limit" : 100,
+            "order" : "-updatedAt"
         ]
         
         viewController.showActivityIndicatory()

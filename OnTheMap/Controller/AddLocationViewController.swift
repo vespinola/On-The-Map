@@ -88,11 +88,7 @@ extension AddLocationViewController: AddLocationProtocol {
             }
         }
         
-        self.showActivityIndicatory()
-        
         self.searchLocation(with: stringQuery, onCompletion: { mapItem in
-            self.hideActivityIndicator()
-        
             ParseHandler.sharedInstance().getLoggedUserLocation(in: self, onCompletion: { studentLocation in
                 if var updateStudentLocation = studentLocation {
                     
@@ -149,7 +145,12 @@ extension AddLocationViewController {
         searchReq.naturalLanguageQuery = string
         
         let search = MKLocalSearch(request: searchReq)
+        
+        showActivityIndicatory()
+        
         search.start(completionHandler: { response, error in
+            self.hideActivityIndicator()
+            
             guard let searchResponse = response, let firstPlace = searchResponse.mapItems.first, error == nil else {
                 Util.showAlert(for: "Cannot get a location for \(string)", in: self)
                 return
