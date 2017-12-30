@@ -13,10 +13,8 @@ class ParseHandler: NSObject {
     
     var session = URLSession.shared
     
-    func request(verb: HTTPMethod = .get, method: String, in viewController: UIViewController? = nil, parameters: OTMDictionary? = nil, jsonBody: OTMDictionary? = nil, completionHandler: @escaping( _ result: Any?, _ error: NSError?) -> Void) {
+    func request(verb: HTTPMethod = .get, method: String, parameters: OTMDictionary? = nil, jsonBody: OTMDictionary? = nil, completionHandler: @escaping( _ result: Any?, _ error: NSError?) -> Void) {
         
-        let customViewController = viewController as? CustomViewController
-    
         let request = NSMutableURLRequest(url: URLFromParameters(parameters, withPathExtension: method))
         request.httpMethod = verb.method()
         
@@ -31,13 +29,9 @@ class ParseHandler: NSObject {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         }
         
-        customViewController?.showActivityIndicatory()
-        
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
             func sendError(_ error: String) {
-                customViewController?.hideActivityIndicator()
-                
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 completionHandler(nil, NSError(domain: "taskForMethod", code: 1, userInfo: userInfo))
             }
@@ -54,15 +48,9 @@ class ParseHandler: NSObject {
             
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
             
-            customViewController?.hideActivityIndicator()
-            
         }
         
         task.resume()        
-    }
-    
-    func clearCache() {
-        StudentInformation.studentsLocation = []
     }
     
     class func sharedInstance() -> ParseHandler {

@@ -9,12 +9,17 @@
 import UIKit
 
 extension ParseHandler {
-    func getStudentLocation(in viewController: UIViewController, onCompletion: @escaping ([StudentInformation]) -> Void) {
+    func getStudentLocation(in viewController: CustomViewController, onCompletion: @escaping ([StudentInformation]) -> Void) {
         let parameters: OTMDictionary = [
             "limit" : 100
         ]
         
-        ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, in: viewController, parameters: parameters, completionHandler: { data, error in
+        viewController.showActivityIndicatory()
+        
+        ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, parameters: parameters, completionHandler: { data, error in
+            
+            viewController.hideActivityIndicator()
+            
             guard error == nil else {
                 Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
@@ -24,20 +29,25 @@ extension ParseHandler {
             
             let students = StudentInformation.studentLocationsFromResults(array["results"] as! [OTMDictionary])
             
-            StudentInformation.studentsLocation = students
+            OTMSingleton.shared().studentsInformation = students
             
             onCompletion(students)
         })
     }
     
-    func getLoggedUserLocation(in viewController: UIViewController, onCompletion: @escaping (StudentInformation?) -> Void) {
+    func getLoggedUserLocation(in viewController: CustomViewController, onCompletion: @escaping (StudentInformation?) -> Void) {
         
         let parameters: OTMDictionary = [
             "where" : "{\"uniqueKey\":\"\(UdacityHandler.sharedInstance().udacityUserData["key"]!)\"}",
             "limit" : 1
         ]
         
-        ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, in: viewController, parameters: parameters, completionHandler: { data, error in
+        viewController.showActivityIndicatory()
+        
+        ParseHandler.sharedInstance().request(method: ParseHandler.Methods.StudentLocation, parameters: parameters, completionHandler: { data, error in
+            
+            viewController.hideActivityIndicator()
+            
             guard error == nil else {
                 Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
@@ -51,7 +61,7 @@ extension ParseHandler {
         })
     }
     
-    func updateLoggedUserLocation(for studentLocation: StudentInformation, in viewController: UIViewController, onCompletion: @escaping (StudentInformation) -> Void) {
+    func updateLoggedUserLocation(for studentLocation: StudentInformation, in viewController: CustomViewController, onCompletion: @escaping (StudentInformation) -> Void) {
         
         let parameters: OTMDictionary = [
             "uniqueKey" : studentLocation.uniqueKey!,
@@ -63,7 +73,12 @@ extension ParseHandler {
             "longitude" : studentLocation.longitude!,
         ]
         
-        ParseHandler.sharedInstance().request(verb: .put, method: ParseHandler.Methods.StudentLocation + "/\(studentLocation.objectId!)", in: viewController, jsonBody: parameters, completionHandler: { data, error in
+        viewController.showActivityIndicatory()
+        
+        ParseHandler.sharedInstance().request(verb: .put, method: ParseHandler.Methods.StudentLocation + "/\(studentLocation.objectId!)", jsonBody: parameters, completionHandler: { data, error in
+            
+            viewController.hideActivityIndicator()
+            
             guard error == nil else {
                 Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
@@ -79,9 +94,14 @@ extension ParseHandler {
         })
     }
     
-    func postStudentLocation(with parameters: OTMDictionary, in viewController: UIViewController, onCompletion: @escaping (StudentInformation) -> Void) {
+    func postStudentLocation(with parameters: OTMDictionary, in viewController: CustomViewController, onCompletion: @escaping (StudentInformation) -> Void) {
+        
+        viewController.showActivityIndicatory()
         
         ParseHandler.sharedInstance().request(verb: .post, method: ParseHandler.Methods.StudentLocation, jsonBody: parameters, completionHandler: { data, error in
+            
+            viewController.hideActivityIndicator()
+            
             guard error == nil else {
                 Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return

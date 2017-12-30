@@ -9,13 +9,18 @@
 import UIKit
 
 extension UdacityHandler {
-    func postSession(with parameters: OTMDictionary, in viewController: UIViewController, onCompletion: @escaping (UdacityPostSession) -> Void) {
+    func postSession(with parameters: OTMDictionary, in viewController: CustomViewController, onCompletion: @escaping (UdacityPostSession) -> Void) {
         
         let parametersWrapper = [
             "udacity" : parameters
         ]
         
-        UdacityHandler.sharedInstance().request(method: UdacityHandler.Methods.Session, in: viewController, jsonBody: parametersWrapper, completionHandler: { data, error in
+        viewController.showActivityIndicatory()
+        
+        UdacityHandler.sharedInstance().request(method: UdacityHandler.Methods.Session, jsonBody: parametersWrapper, completionHandler: { data, error in
+            
+            viewController.hideActivityIndicator()
+            
             guard error == nil else {
                 Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
@@ -33,9 +38,14 @@ extension UdacityHandler {
         })
     }
     
-    func deleteSession(in viewController: UIViewController, onCompletion: @escaping (UdacityDeleteSession) -> Void) {
+    func deleteSession(in viewController: CustomViewController, onCompletion: @escaping (UdacityDeleteSession) -> Void) {
         
-        UdacityHandler.sharedInstance().request(verb: .delete, method: UdacityHandler.Methods.Session, in: viewController, completionHandler: { data, error in
+        viewController.showActivityIndicatory()
+        
+        UdacityHandler.sharedInstance().request(verb: .delete, method: UdacityHandler.Methods.Session, completionHandler: { data, error in
+            
+            viewController.hideActivityIndicator()
+            
             guard error == nil else {
                 Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return
@@ -49,10 +59,15 @@ extension UdacityHandler {
         })
     }
     
-    func getUserData(in viewController: UIViewController, onCompletion: @escaping (OTMDictionary) -> Void) {
+    func getUserData(in viewController: CustomViewController, onCompletion: @escaping (OTMDictionary) -> Void) {
         let sessionKey = UdacityHandler.sharedInstance().udacitySession.account.key!
         
-        UdacityHandler.sharedInstance().request(verb: .get, method: UdacityHandler.Methods.Users + "/\(sessionKey)", in: viewController, completionHandler: { data, error in
+        viewController.showActivityIndicatory()
+        
+        UdacityHandler.sharedInstance().request(verb: .get, method: UdacityHandler.Methods.Users + "/\(sessionKey)", completionHandler: { data, error in
+            
+            viewController.hideActivityIndicator()
+            
             guard error == nil else {
                 Util.showAlert(for: (error?.localizedDescription ?? "empty error"), in: viewController)
                 return

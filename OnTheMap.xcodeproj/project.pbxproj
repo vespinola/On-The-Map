@@ -20,6 +20,7 @@
 		CE17B4141FF012F400F51DCC /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17B4131FF012F400F51DCC /* AddLocationViewController.swift */; };
 		CE6CD6641FF06C990001C7AB /* FinishLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CD6631FF06C990001C7AB /* FinishLocationViewController.swift */; };
 		CE76F0CE1FEDFC240067FDFC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76F0CD1FEDFC240067FDFC /* CustomButton.swift */; };
+		CE7A8C4B1FF7F70100C83B9F /* OTMSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A8C4A1FF7F70100C83B9F /* OTMSingleton.swift */; };
 		CE87E3251FEEFFA500E9321C /* ParseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E3241FEEFFA500E9321C /* ParseHandler.swift */; };
 		CE87E3271FEF1EB600E9321C /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E3261FEF1EB600E9321C /* ListViewController.swift */; };
 		CE87E3291FEF2ACF00E9321C /* UdacityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87E3281FEF2ACF00E9321C /* UdacityHandler.swift */; };
@@ -47,6 +48,7 @@
 		CE17B4131FF012F400F51DCC /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		CE6CD6631FF06C990001C7AB /* FinishLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishLocationViewController.swift; sourceTree = "<group>"; };
 		CE76F0CD1FEDFC240067FDFC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		CE7A8C4A1FF7F70100C83B9F /* OTMSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMSingleton.swift; sourceTree = "<group>"; };
 		CE87E3241FEEFFA500E9321C /* ParseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseHandler.swift; sourceTree = "<group>"; };
 		CE87E3261FEF1EB600E9321C /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		CE87E3281FEF2ACF00E9321C /* UdacityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityHandler.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				CE9A810F1FEE907A00B12203 /* View */,
 				C3B393BB1FE86F9200DB1F52 /* AppDelegate.swift */,
 				C3B9C7191FE98AB0003F5377 /* Constants.swift */,
+				CE7A8C4A1FF7F70100C83B9F /* OTMSingleton.swift */,
 				C3B393BF1FE86F9200DB1F52 /* Main.storyboard */,
 				C3B393C71FE86F9200DB1F52 /* Info.plist */,
 				C3B9C71B1FE9BFE3003F5377 /* Supporting Files */,
@@ -250,6 +253,7 @@
 				C3B393BC1FE86F9200DB1F52 /* AppDelegate.swift in Sources */,
 				CE87E32B1FEF30E500E9321C /* UdacityConvenience.swift in Sources */,
 				CE87E32D1FEF31FA00E9321C /* UdacityPostSession.swift in Sources */,
+				CE7A8C4B1FF7F70100C83B9F /* OTMSingleton.swift in Sources */,
 				CE87E3251FEEFFA500E9321C /* ParseHandler.swift in Sources */,
 				CEF608DA1FE9F8AD00076339 /* Util.swift in Sources */,
 				CE9A81171FEEABD800B12203 /* ParseConvenience.swift in Sources */,

@@ -50,15 +50,14 @@ class Util {
         return jsonData
     }
     
-    class func performLogout(in viewController: UIViewController, with callback: (() -> Void)? = nil) {
+    class func performLogout(in viewController: CustomViewController, with callback: (() -> Void)? = nil) {
         UdacityHandler.sharedInstance().deleteSession(in: viewController, onCompletion: { _ in
             performUIUpdatesOnMain {
                 let appdelegate = UIApplication.shared.delegate as! AppDelegate
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewControllerID") as! LoginViewController
                 
-                ParseHandler.sharedInstance().clearCache()
-                UdacityHandler.sharedInstance().clearCache()
+                OTMSingleton.shared().clear()
                 
                 UIView.transition(with: viewController.view, duration: 0.5, options: .transitionFlipFromLeft, animations: {
                     appdelegate.window!.rootViewController = homeViewController
